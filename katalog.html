@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Katalog Buku - Orange Press</title>
+  <link rel="stylesheet" href="./assets/style/katalog.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo-section">
+      <img src="./assets/img/logoorangepress.png" alt="Logo Orange Press" class="logo">
+      <h1>KATALOG ORANGE PRESS</h1>
+    </div>
+    <button class="btn-home" onclick="window.location.href='./index.html'">
+      🏠 Halaman Utama
+    </button>
+  </header>
+
+  <!-- Katalog Buku (DINAMIS DARI BACKEND) -->
+  <main class="catalog" id="catalog"></main>
+
+  <!-- Modal Detail Buku -->
+  <div id="bookDetail" class="book-modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeDetail()">✖</button>
+      <div class="book-info">
+        <img id="detail-cover" src="" alt="Cover Buku">
+        <div class="book-meta">
+          <h2 id="detail-title"></h2>
+          <ul id="book-data"></ul>
+          <p id="book-sinopsis"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <script src="./assets/js/public/catalog.js"></script>
+
+</body>
+</html>

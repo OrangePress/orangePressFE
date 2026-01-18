@@ -1,0 +1,265 @@
+<!-- Admin -->
+<aside class="sidebar" id="menu-admin" aria-label="Sidebar Admin">
+  <div>
+    <div class="brand" title="Orange Press">
+      <img
+        src="/assets/img/logoorangepress.png"
+        alt="Orange Press"
+        class="brand-logo"
+      />
+      <div>
+        <div class="brand-title">Orange Press</div>
+        <div class="brand-sub">Admin Panel</div>
+      </div>
+    </div>
+
+    <nav class="menu" id="menu">
+      <!-- Beranda -->
+      <button
+        class="menu-item"
+        data-panel="overview"
+        data-href="/dashboard/admin/dashboard.html"
+        onclick="window.location.href=this.dataset.href"
+      >
+        <span>🏠</span> Beranda
+      </button>
+
+      <!-- Manajemen Akun -->
+      <button
+        class="menu-item"
+        data-panel="authors"
+        data-href="/dashboard/admin/manajemen_akun.html"
+        onclick="window.location.href=this.dataset.href"
+      >
+        <span>👥</span> Manajemen Akun
+      </button>
+
+      <!-- Manajemen Transaksi dan PKS -->
+      <button
+        class="menu-item"
+        data-panel="payments"
+        data-href="/dashboard/admin/manajemen_transaksi_pks.html"
+        onclick="window.location.href=this.dataset.href"
+      >
+        <span>💳</span> Manajemen Transaksi dan PKS
+      </button>
+
+      <!-- Manajemen Naskah -->
+      <button
+        class="menu-item"
+        data-panel="manuscripts"
+        data-href="/dashboard/admin/manajemen_naskah.html"
+        onclick="window.location.href=this.dataset.href"
+      >
+        <span>📚</span> Manajemen Naskah
+      </button>
+
+      <!-- Manajemen Review Naskah -->
+      <button
+        class="menu-item"
+        data-panel="reviewers"
+        data-href="/dashboard/admin/manajemen_review_naskah.html"
+        onclick="window.location.href=this.dataset.href"
+      >
+        <span>📝</span> Manajemen Review Naskah
+      </button>
+
+      <!-- Manajemen Profil Reviewer -->
+      <button
+        class="menu-item"
+        data-panel="reviewerProfile"
+        data-href="/dashboard/admin/manajemen_profil_reviewer.html"
+        onclick="window.location.href=this.dataset.href"
+      >
+        <span>👤</span> Manajemen Profil Reviewer
+      </button>
+
+      <!-- Manajemen Paket Publikasi -->
+      <button
+        class="menu-item"
+        data-panel="packages"
+        data-href="/dashboard/admin/manajemen_paket_publikasi.html"
+        onclick="window.location.href=this.dataset.href"
+      >
+        <span>📦</span> Manajemen Paket Publikasi
+      </button>
+
+      <!-- Manajemen Katalog Buku -->
+      <button
+        class="menu-item"
+        data-panel="catalog"
+        data-href="/dashboard/admin/manajemen_katalog_buku.html"
+        onclick="window.location.href=this.dataset.href"
+      >
+        <span>📖</span> Manajemen Katalog
+      </button>
+
+      <!-- Logout -->
+      <button type="button" class="menu-item logout" onclick="logout()">
+        <span>🚪</span> Logout
+      </button>
+    </nav>
+  </div>
+
+  <div class="sidebar-footer">
+    <div class="signed">Signed in as</div>
+    <div class="user-email" id="fullname"></div>
+  </div>
+</aside>
+
+<!-- Penulis -->
+<aside class="sidebar" id="menu-penulis" aria-label="Sidebar Penulis">
+  <div>
+    <div class="brand" title="Orange Press">
+      <img
+        src="/assets/img/logoorangepress.png"
+        alt="Orange Press"
+        class="brand-logo"
+      />
+      <div>
+        <div class="brand-title">Orange Press</div>
+        <div class="brand-sub">Penulis Panel</div>
+      </div>
+    </div>
+
+    <!-- MENU LIST -->
+    <nav class="menu">
+      <button
+        class="menu-item"
+        data-target="home"
+        data-href="/dashboard/penulis/dashboard.html"
+        onclick="window.location.href=this.dataset.href"
+      >
+        <span>🏠</span> Beranda
+      </button>
+
+      <button
+        class="menu-item"
+        data-target="paket"
+        data-href="/dashboard/penulis/pilih_paket.html"
+        onclick="window.location.href=this.dataset.href"
+      >
+        <span>📦</span> Pilih Paket
+      </button>
+
+      <button
+        class="menu-item"
+        data-target="pembayaran"
+        data-href="/dashboard/penulis/pembayaran_pks.html"
+        onclick="window.location.href=this.dataset.href"
+      >
+        <span>💳</span> Perjanjian Kerja Sama
+      </button>
+
+      <!-- Upload Naskah -->
+      <button
+        class="menu-item"
+        data-target="upload-naskah"
+        data-href="/dashboard/penulis/upload_naskah.html"
+        onclick="window.location.href=this.dataset.href"
+      >
+        <span>📝</span> Upload Naskah
+      </button>
+
+      <!-- Naskah -->
+      <button
+        class="menu-item"
+        data-target="upload-naskah"
+        data-href="/dashboard/penulis/naskah.html"
+        onclick="window.location.href=this.dataset.href"
+      >
+        <span>📝</span> Naskah
+      </button>
+
+      <!-- Logout -->
+      <button type="button" class="menu-item logout" onclick="logout()">
+        <span>🚪</span> Logout
+      </button>
+    </nav>
+  </div>
+
+  <!-- IDENTITAS USER -->
+  <div class="sidebar-footer">
+    <small>Signed in as</small>
+    <div id="fullname" class="user-email"></div>
+  </div>
+</aside>
+
+<!-- reviwer -->
+<aside class="sidebar" id="menu-reviewer" aria-label="Sidebar Reviewer">
+  <div>
+    <div class="brand" title="Orange Press">
+      <img
+        src="/assets/img/logoorangepress.png"
+        alt="Orange Press"
+        class="brand-logo"
+      />
+      <div>
+        <div class="brand-title">Orange Press</div>
+        <div class="brand-sub">Reviewer Panel</div>
+      </div>
+    </div>
+
+    <nav class="menu" id="menu">
+      <!-- Beranda -->
+      <button
+        class="menu-item"
+        data-panel="overview"
+        data-href="/dashboard/reviewer/dashboard.html"
+        onclick="window.location.href=this.dataset.href"
+      >
+        <span>🏠</span> Beranda
+      </button>
+
+      <!-- Naskah Masuk -->
+      <button
+        class="menu-item"
+        data-panel="inbox"
+        data-href="/dashboard/reviewer/naskah_masuk.html"
+        onclick="window.location.href=this.dataset.href"
+      >
+        <span>📄</span> Naskah Masuk
+      </button>
+
+      <!-- Riwayat Review -->
+      <button
+        class="menu-item"
+        data-panel="history"
+        data-href="/dashboard/reviewer/riwayat_review.html"
+        onclick="window.location.href=this.dataset.href"
+      >
+        <span>📁</span> Riwayat Review
+      </button>
+
+      <!-- Profil Reviewer -->
+      <button
+        class="menu-item"
+        data-panel="profile"
+        data-href="/dashboard/reviewer/profil_reviewer.html"
+        onclick="window.location.href=this.dataset.href"
+      >
+        <span>🧑</span> Profil Reviewer
+      </button>
+
+      <!-- Panduan Review -->
+      <button
+        class="menu-item"
+        data-panel="guideline"
+        data-href="/dashboard/reviewer/panduan_review.html"
+        onclick="window.location.href=this.dataset.href"
+      >
+        <span>📘</span> Panduan Review
+      </button>
+
+      <!-- Logout -->
+      <button type="button" class="menu-item logout" onclick="logout()">
+        <span>🚪</span> Logout
+      </button>
+    </nav>
+  </div>
+
+  <div class="sidebar-footer">
+    <div class="signed">Signed in as</div>
+    <div class="user-email" id="fullname"></div>
+  </div>
+</aside>

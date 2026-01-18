@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/assets/style/admin.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrap">
+      <div id="sidebar-container"></div>
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <h1 id="pageTitle">Dashboard Overview</h1>
+            <div class="lead">
+              Ringkasan cepat & kontrol semua aktivitas penerbitan.
+            </div>
+          </div>
+        </header>
+
+        <!-- ======================================== -->
+        <!-- PANEL: MANAJEMEN PROFIL REVIEWER (BARU) -->
+        <!-- ======================================== -->
+        <section class="panel" id="reviewerProfile">
+          <div class="panel-header panel-header-reviewer">
+            <div class="title-panel">
+              <h2>Manajemen Profil Reviewer</h2>
+              <p class="lead">
+                Lihat dan kelola data profil reviewer yang diisi melalui halaman
+                reviewer.
+              </p>
+            </div>
+            <div class="button-panel">
+              <button id="openAddReviewerModal" class="btn btn-reviewer">
+                Tambah Reviewer
+              </button>
+            </div>
+          </div>
+
+          <!-- PILIH REVIEWER -->
+          <div class="card reviewer-profile-selector">
+            <label
+              for="profileReviewerSelect"
+              class="muted"
+              style="margin-bottom: 6px; display: block"
+            >
+              Pilih reviewer yang akan ditampilkan:
+            </label>
+            <select id="profileReviewerSelect" class="reviewer-select">
+              <!-- opsi diisi melalui admin.js -->
+            </select>
+          </div>
+
+          <!-- DATA DIRI & PREFERENSI -->
+          <div class="card reviewer-profile-card">
+            <!-- DATA DIRI & PREFERENSI -->
+            <div class="card reviewer-profile-card">
+              <div class="reviewer-profile-header">
+                <div>
+                  <h3>Data Diri & Preferensi</h3>
+                  <p class="muted">
+                    Informasi ini diisi langsung oleh reviewer.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Kontainer dinamis — akan diisi oleh JS -->
+              <div id="reviewerProfileContent" class="reviewer-profile-content">
+                <p class="muted">Pilih reviewer untuk melihat profil.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- MODAL TAMBAH REVIEWER -->
+        <div id="addReviewerModal" class="modal">
+          <div class="modal-content">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 1.5rem;
+              "
+            >
+              <h3>Tambah Reviewer Baru</h3>
+              <button
+                id="closeAddReviewerModal"
+                style="
+                  background: none;
+                  border: none;
+                  font-size: 1.5rem;
+                  cursor: pointer;
+                "
+              >
+                ✕
+              </button>
+            </div>
+
+            <form id="addReviewerForm">
+              <div style="margin-bottom: 1rem">
+                <label for="fullname">Nama Lengkap *</label>
+                <input
+                  type="text"
+                  id="fullname"
+                  required
+                  style="border-radius: .3rem; width: 100%; padding: 0.5rem; margin-top: 0.25rem"
+                />
+              </div>
+
+              <div style="margin-bottom: 1rem">
+                <label for="username">Username *</label>
+                <input
+                  type="text"
+                  id="username"
+                  required
+                  style="border-radius: .3rem; width: 100%; padding: 0.5rem; margin-top: 0.25rem"
+                />
+              </div>
+
+              <div style="margin-bottom: 1rem">
+                <label for="phone">Nomor Telepon *</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  required
+                  style="border-radius: .3rem; width: 100%; padding: 0.5rem; margin-top: 0.25rem"
+                />
+              </div>
+
+              <div style="margin-bottom: 1rem">
+                <label for="email">Email *</label>
+                <input
+                  type="email"
+                  id="email"
+                  required
+                  style="border-radius: .3rem; width: 100%; padding: 0.5rem; margin-top: 0.25rem"
+                />
+              </div>
+
+              <div style="margin-bottom: 1.5rem">
+                <label for="password">Password *</label>
+                <input
+                  type="password"
+                  id="password"
+                  required
+                  minlength="6"
+                  style="border-radius: .3rem; width: 100%; padding: 0.5rem; margin-top: 0.25rem"
+                />
+                <small class="muted" style="font-size: 0.85rem"
+                  >Minimal 6 karakter</small
+                >
+              </div>
+
+              <div style="text-align: right">
+                <button
+                  type="button"
+                  id="cancelAddReviewer"
+                  class="btn-secondary"
+                  style="border-radius: .3rem; padding: 0.5rem 1rem; margin-right: 0.5rem"
+                >
+                  Batal
+                </button>
+                <button
+                  type="submit"
+                  class="btn-primary"
+                  style="
+                    padding: 0.5rem 1rem;
+                    background: #ff6b00;
+                    color: white;
+                    border: none;
+                    border-radius: .3rem;
+                  "
+                >
+                  Simpan
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="./../../assets/js/admin/utils/navbar.js"></script>
+    <script src="/assets/js/admin/data/profile_reviewer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>

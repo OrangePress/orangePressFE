@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/assets/style/admin.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrap">
+      <div id="sidebar-container"></div>
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <h1 id="pageTitle">Dashboard Overview</h1>
+            <div class="lead">
+              Ringkasan cepat & kontrol semua aktivitas penerbitan.
+            </div>
+          </div>
+        </header>
+
+        <!-- PANEL: PAKET PUBLIKASI -->
+        <section class="panel" id="packages">
+          <div
+            class="panel-header"
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <div>
+              <h2>Kelola Paket Publikasi</h2>
+              <p class="lead">Tambah, edit, dan hapus paket yang tersedia.</p>
+            </div>
+            <button class="btn" id="addPackageBtn">+ Paket Baru</button>
+          </div>
+
+          <!-- Kontainer Daftar Paket -->
+          <div id="packagesList"></div>
+        </section>
+
+        <!-- MODAL TAMBAH PAKET -->
+        <div
+          id="addPackageModal"
+          class="modal"
+          style="
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+          "
+        >
+          <div
+            class="modal-content"
+            style="
+              width: 600px;
+              max-width: 95%;
+              background: white;
+              padding: 1.5rem;
+              border-radius: 8px;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            "
+          >
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 1.5rem;
+              "
+            >
+              <h3>Tambah Paket Publikasi Baru</h3>
+              <button
+                id="closeAddPackageModal"
+                style="
+                  background: none;
+                  border: none;
+                  font-size: 1.5rem;
+                  cursor: pointer;
+                "
+              >
+                ✕
+              </button>
+            </div>
+
+            <form id="addPackageForm">
+              <div style="margin-bottom: 1rem">
+                <label for="packageTitle">Nama Paket *</label>
+                <input
+                  type="text"
+                  id="packageTitle"
+                  required
+                  placeholder="Contoh: Paket 25 Eksemplar"
+                  style="width: 100%; padding: 0.5rem; margin-top: 0.25rem"
+                />
+              </div>
+
+              <div style="margin-bottom: 1rem">
+                <label for="packagePrice">Harga (Rp) *</label>
+                <input
+                  type="number"
+                  id="packagePrice"
+                  required
+                  min="0"
+                  placeholder="Contoh: 1500000"
+                  style="width: 100%; padding: 0.5rem; margin-top: 0.25rem"
+                />
+              </div>
+
+              <div style="margin-bottom: 1rem">
+                <label for="packageDescription">Deskripsi *</label>
+                <textarea
+                  id="packageDescription"
+                  required
+                  rows="3"
+                  placeholder="Contoh: Paket penerbitan buku cetak 25 eksemplar"
+                  style="width: 100%; padding: 0.5rem; margin-top: 0.25rem"
+                ></textarea>
+              </div>
+
+              <div style="margin-bottom: 1rem">
+                <label for="packageBenefits"
+                  >Fasilitas (satu per baris) *</label
+                >
+                <textarea
+                  id="packageBenefits"
+                  required
+                  rows="5"
+                  placeholder="Contoh:&#10;ISBN Perpusnas RI&#10;Cetak 25 Eksemplar (MAX. 200 Lembar)&#10;Terarsip Perpusnas & Perpusda"
+                  style="
+                    width: 100%;
+                    padding: 0.5rem;
+                    margin-top: 0.25rem;
+                    font-family: monospace;
+                  "
+                ></textarea>
+                <small class="muted" style="font-size: 0.85rem"
+                  >Masukkan setiap fasilitas di baris baru.</small
+                >
+              </div>
+
+              <div style="text-align: right; margin-top: 1.5rem">
+                <button
+                  type="button"
+                  id="cancelAddPackage"
+                  class="btn-secondary"
+                  style="
+                    padding: 0.5rem 1rem;
+                    margin-right: 0.5rem;
+                    background: #e0e0e0;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                  "
+                >
+                  Batal
+                </button>
+                <button
+                  type="submit"
+                  class="btn-primary"
+                  style="
+                    padding: 0.5rem 1rem;
+                    background: #ff6b00;
+                    color: white;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                  "
+                >
+                  Simpan Paket
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="./../../assets/js/admin/utils/navbar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/assets/js/admin/data/kelola_paket.js"></script>
+  </body>
+</html>

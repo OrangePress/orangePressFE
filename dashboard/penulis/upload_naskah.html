@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/assets/style/penulis.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrap">
+      <div id="sidebar-container"></div>
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <h1 id="pageTitle">Dashboard Overview</h1>
+            <div class="lead">
+              Ringkasan cepat & kontrol semua aktivitas penerbitan.
+            </div>
+          </div>
+        </header>
+
+        <!-- ====================================================================================
+         FORM UPLOAD NASKAH (MODERN)
+         ==================================================================================== -->
+        <section id="upload-naskah" class="panel active-panel">
+          <h2>Formulir Upload Naskah</h2>
+          <p>Isi data lengkap sebelum mengunggah naskah final Anda.</p>
+
+          <!-- ✅ penting: enctype multipart + semua field punya name -->
+          <form
+            id="formNaskah"
+            class="form-grid-modern"
+            enctype="multipart/form-data"
+          >
+            <!-- Jenis ISBN -->
+            <div class="form-block">
+              <label>Jenis Permohonan ISBN</label>
+              <select
+                id="jenisIsbnSelect"
+                name="jenis_permohonan_isbn"
+                required
+              >
+                <option value="">-- Pilih Jenis --</option>
+                <option value="Lepas">Lepas</option>
+                <option value="Jilid">Jilid</option>
+              </select>
+            </div>
+
+            <!-- Judul Buku -->
+            <div class="form-block">
+              <label>Judul Buku</label>
+              <input
+                type="text"
+                id="judulBukuInput"
+                name="judul_buku"
+                placeholder="Masukkan judul buku"
+                required
+              />
+            </div>
+
+            <!-- Kepengarangan -->
+            <div class="form-block full">
+              <label>Kepengarangan</label>
+              <div id="authorContainer" class="author-list">
+                <div class="author-entry">
+                  <select name="author_role[]" required>
+                    <option value="Penulis">Penulis</option>
+                    <option value="Komikus">Komikus</option>
+                    <option value="Penerjemah">Penerjemah</option>
+                    <option value="Ilustrator">Ilustrator</option>
+                    <option value="Editor">Editor</option>
+                    <option value="Muraja’ah">Muraja’ah</option>
+                    <option value="Reviewer">Reviewer</option>
+                    <option value="Fotografer">Fotografer</option>
+                  </select>
+                  <input
+                    type="text"
+                    name="author_name[]"
+                    placeholder="Nama"
+                    required
+                  />
+                  <button type="button" id="addAuthor" class="btn-add">
+                    + Tambah Nama
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Media -->
+            <div class="form-block">
+              <label>Media Terbitan ISBN</label>
+              <select id="mediaSelect" name="media_terbitan_isbn" required>
+                <option value="">-- Pilih Media --</option>
+                <option value="Cetak">Cetak</option>
+                <option value="Digital (PDF)">Digital (PDF)</option>
+                <option value="Digital (EPUB)">Digital (EPUB)</option>
+                <option value="Audio Book">Audio Book</option>
+                <option value="Audio Visual">Audio Visual</option>
+              </select>
+            </div>
+
+            <!-- Kelompok Pembaca -->
+            <div class="form-block">
+              <label>Kelompok Pembaca</label>
+              <select
+                id="kelompokPembacaSelect"
+                name="kelompok_pembaca"
+                required
+              >
+                <option value="">-- Pilih Kelompok --</option>
+                <option value="Anak">Anak</option>
+                <option value="Dewasa">Dewasa</option>
+                <option value="Semua Umur">Semua Umur</option>
+              </select>
+            </div>
+
+            <!-- Jenis Pustaka -->
+            <div class="form-block">
+              <label>Jenis Pustaka</label>
+              <select id="jenisPustakaSelect" name="jenis_pustaka" required>
+                <option value="">-- Pilih Jenis --</option>
+                <option value="Fiksi">Fiksi</option>
+                <option value="Nonfiksi">Nonfiksi</option>
+              </select>
+            </div>
+
+            <!-- Kategori -->
+            <div class="form-block">
+              <label>Kategori Jenis Pustaka</label>
+              <select
+                id="kategoriPustakaSelect"
+                name="kategori_jenis_pustaka"
+                required
+              >
+                <option value="">-- Pilih Kategori --</option>
+                <option value="Terjemahan">Terjemahan</option>
+                <option value="Non Terjemahan">Non Terjemahan</option>
+              </select>
+            </div>
+
+            <!-- KDT -->
+            <div class="form-block full">
+              <label>Apakah memerlukan KDT?</label>
+              <select id="kdtSelect" name="kdt" required>
+                <option value="">-- Pilih --</option>
+                <option value="Tidak">Tidak</option>
+                <option value="Ya, prioritaskan pengajuan KDT kami">
+                  Ya, prioritaskan pengajuan KDT kami
+                </option>
+              </select>
+            </div>
+
+            <!-- Deskripsi -->
+            <div class="form-block full">
+              <label>Deskripsi/Abstrak Buku/Sinopsis Buku</label>
+              <textarea
+                id="deskripsiTextarea"
+                name="deskripsi"
+                minlength="200"
+                required
+                placeholder="Tuliskan deskripsi, abstrak, atau sinopsis buku minimal 200 karakter"
+              ></textarea>
+            </div>
+
+            <!-- Halaman -->
+            <div class="form-block">
+              <label>Jumlah Halaman</label>
+              <input
+                type="number"
+                id="jumlahHalamanInput"
+                name="jumlah_halaman"
+                min="1"
+                required
+              />
+            </div>
+
+            <!-- Tinggi Buku -->
+            <div class="form-block">
+              <label>Tinggi Buku (cm)</label>
+              <input
+                type="number"
+                id="tinggiBukuInput"
+                name="tinggi_buku_cm"
+                min="1"
+                required
+              />
+            </div>
+
+            <!-- Seri Buku (✅ TIDAK WAJIB) -->
+            <div class="form-block">
+              <label>Seri Buku</label>
+              <input
+                type="text"
+                id="seriBukuInput"
+                name="seri_buku"
+                placeholder="Nama seri buku (jika ada)"
+              />
+            </div>
+
+            <!-- Ilustrasi -->
+            <div class="form-block">
+              <label>Apakah terdapat ilustrasi?</label>
+              <select id="ilustrasiSelect" name="ilustrasi" required>
+                <option value="">-- Pilih --</option>
+                <option value="Tidak">Tidak</option>
+                <option value="Ya, ada ilustrasi">Ya, ada ilustrasi</option>
+              </select>
+            </div>
+
+            <!-- UPLOAD TURNITIN -->
+            <div class="form-block full">
+              <label>Hasil Cek Plagiarisme(PDF)</label>
+              <p class="muted">
+                Unggah hasil Turnitin (PDF) dengan batas maksimal kemiripan ≤
+                25%.
+              </p>
+              <label class="file-modern">
+                <input
+                  type="file"
+                  id="turnitinFile"
+                  name="turnitin_file"
+                  accept=".pdf"
+                  required
+                />
+                <span id="turnitinFileText">📁 Pilih File Plagiarisme</span>
+              </label>
+            </div>
+
+            <!-- Upload Dummy Buku -->
+            <div class="form-block full">
+              <label>Dummy Buku yang Akan Terbit</label>
+              <label class="file-modern">
+                <input
+                  type="file"
+                  id="naskahFile"
+                  name="naskah_file"
+                  accept=".pdf,.docx"
+                  required
+                />
+                <span id="naskahFileText">📁 Pilih File Naskah</span>
+              </label>
+            </div>
+
+            <!-- Attachment -->
+            <div class="form-block full">
+              <label>File Attachment</label>
+              <label class="file-modern">
+                <input
+                  type="file"
+                  id="attachmentFile"
+                  name="attachment_files"
+                  multiple
+                  required
+                />
+                <span id="attachmentFileText">📁 Pilih File Attachment</span>
+              </label>
+            </div>
+
+            <!-- Cover Depan -->
+            <div class="form-block full">
+              <label>Cover Buku Depan</label>
+              <label class="file-modern">
+                <input
+                  type="file"
+                  id="coverDepanFile"
+                  name="cover_depan"
+                  required
+                  accept="image/*"
+                />
+                <span id="coverDepanFileText">📁 Pilih Cover Buku Depan</span>
+              </label>
+            </div>
+
+            <!-- Cover Belakang -->
+            <div class="form-block full">
+              <label>Cover Buku Belakang</label>
+              <label class="file-modern">
+                <input
+                  type="file"
+                  id="coverBelakangFile"
+                  name="cover_belakang"
+                  required
+                  accept="image/*"
+                />
+                <span id="coverBelakangFileText"
+                  >📁 Pilih Cover Buku Belakang</span
+                >
+              </label>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-modern">Submit Naskah</button>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./../../assets/js/admin/utils/navbar.js"></script>
+    <script src="/assets/js/penulis/data/upload_naskah.js"></script>
+  </body>
+</html>

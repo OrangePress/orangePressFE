@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/assets/style/reviewer.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrap">
+      <div id="sidebar-container"></div>
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <h1 id="pageTitle">Dashboard Overview</h1>
+            <div class="lead">
+              Ringkasan cepat & kontrol semua aktivitas penerbitan.
+            </div>
+          </div>
+        </header>
+
+        <div class="main-content">
+          <!-- ================== PANEL: PROFIL REVIEWER ================== -->
+          <section class="panel active-panel" id="profile">
+            <div class="section-header">
+              <div>
+                <h2>Profil Reviewer</h2>
+                <p class="section-sub">
+                  Kelola data diri dan preferensi bidang kajian untuk memudahkan
+                  editor memilihmu.
+                </p>
+              </div>
+            </div>
+
+            <div class="profile-grid">
+              <div class="card profile-main">
+                <h3>Data Diri & Preferensi</h3>
+                <form id="profileForm">
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="pfInstitution">Institusi</label>
+                      <input
+                        type="text"
+                        id="pfInstitution"
+                        placeholder="Universitas / Instansi"
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="pfField">Bidang Kajian Utama</label>
+                      <select id="pfField">
+                        <option value="">Pilih bidang...</option>
+                        <option value="Teknologi & Sistem Informasi">
+                          Teknologi & Sistem Informasi
+                        </option>
+                        <option value="Manajemen & Bisnis">
+                          Manajemen & Bisnis
+                        </option>
+                        <option value="Pendidikan">Pendidikan</option>
+                        <option value="Hukum">Hukum</option>
+                        <option value="Sosial & Humaniora">
+                          Sosial & Humaniora
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="pfBankName">Nama Bank</label>
+                      <input
+                        type="text"
+                        id="pfBankName"
+                        placeholder="Contoh: BNI, BCA, Mandiri"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="pfBankAccount">Nomor Rekening Bank</label>
+                      <input
+                        type="text"
+                        id="pfBankAccount"
+                        placeholder="Masukkan nomor rekening"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="pfBankAccountName">Atas Nama Rekening</label>
+                      <input
+                        type="text"
+                        id="pfBankAccountName"
+                        placeholder="Nama pemilik rekening"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Minat Topik Review</label>
+                    <div class="checkbox-group">
+                      <label
+                        ><input
+                          type="checkbox"
+                          name="pfInterests"
+                          value="Artikel ilmiah"
+                        />
+                        Artikel ilmiah</label
+                      >
+                      <label
+                        ><input
+                          type="checkbox"
+                          name="pfInterests"
+                          value="Buku ajar"
+                        />
+                        Buku ajar</label
+                      >
+                      <label
+                        ><input
+                          type="checkbox"
+                          name="pfInterests"
+                          value="Monograf"
+                        />
+                        Monograf</label
+                      >
+                      <label
+                        ><input
+                          type="checkbox"
+                          name="pfInterests"
+                          value="Prosiding"
+                        />
+                        Prosiding</label
+                      >
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="pfBio">Bio Singkat</label>
+                    <textarea
+                      id="pfBio"
+                      rows="4"
+                      placeholder="Tuliskan profil singkat, keahlian, dan pengalaman review..."
+                    ></textarea>
+                  </div>
+
+                  <div class="profile-actions">
+                    <button
+                      type="button"
+                      class="btn-secondary"
+                      id="profileResetBtn"
+                    >
+                      Reset
+                    </button>
+                    <button type="submit" class="btn">Simpan Profil</button>
+                  </div>
+                </form>
+              </div>
+
+              <div class="card profile-side">
+                <h3>Ringkasan Profil</h3>
+                <p class="section-sub">
+                  Informasi ini akan terlihat oleh editor saat memilih reviewer
+                  yang paling sesuai.
+                </p>
+                <ul class="profile-summary">
+                  <li><strong>Nama:</strong> <span id="psName">-</span></li>
+                  <li><strong>Email:</strong> <span id="psEmail">-</span></li>
+                  <li>
+                    <strong>Institusi:</strong>
+                    <span id="psInstitution">-</span>
+                  </li>
+                  <li>
+                    <strong>Bidang Kajian:</strong> <span id="psField">-</span>
+                  </li>
+                  <li>
+                    <strong>Nomor Telepon:</strong> <span id="psPhone">-</span>
+                  </li>
+                  <li>
+                    <strong>Nama Bank:</strong> <span id="psBankName">-</span>
+                  </li>
+                  <li>
+                    <strong>No. Rekening:</strong>
+                    <span id="psBankAccount">-</span>
+                  </li>
+                  <li>
+                    <strong>Atas Nama:</strong>
+                    <span id="psBankAccountName">-</span>
+                  </li>
+                  <li>
+                    <strong>Minat Topik:</strong>
+                    <span id="psInterests">-</span>
+                  </li>
+                </ul>
+                <p class="section-sub" style="margin-top: 12px">
+                  Pastikan data selalu <strong>up-to-date</strong> agar sistem
+                  dapat mencocokkan naskah yang relevan dengan keahlianmu.
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+        <!-- FOOTER: diseragamkan dengan halaman lain -->
+        <footer class="footer">© Orange Press 2025</footer>
+      </main>
+    </div>
+
+    <script src="./../../assets/js/admin/utils/navbar.js"></script>
+    <script src="/assets/js/reviewer/profil_reviewer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  </body>
+</html>

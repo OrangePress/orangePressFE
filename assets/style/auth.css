@@ -1,0 +1,6 @@
+.bg-login {
+  background: linear-gradient(rgb(0, 0, 0, 60%), rgb(0, 0, 0, 60%)),
+    url("./../img/taman (15).jpg");
+  background-size: cover;
+  background-position: center;
+}

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/assets/style/reviewer.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrap">
+      <div id="sidebar-container"></div>
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <h1 id="pageTitle">Dashboard Overview</h1>
+            <div class="lead">
+              Ringkasan cepat & kontrol semua aktivitas penerbitan.
+            </div>
+          </div>
+        </header>
+
+        <div class="main-content">
+          <!-- ============================= -->
+          <!-- PANEL: OVERVIEW / BERANDA    -->
+          <!-- ============================= -->
+          <section class="panel active-panel" id="overview">
+            <div class="topbar-date" id="topbarDate"></div>
+
+            <div class="overview-layout">
+              <div class="overview-main">
+                <div class="section">
+                  <div class="section-header">
+                    <div>
+                      <h2>Ringkasan Reviewer</h2>
+                      <p class="section-sub">
+                        Lihat sekilas progres dan tugas yang perlu kamu kerjakan
+                        hari ini.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="cards-grid">
+                    <div class="card card-stat">
+                      <div class="card-label">Naskah Belum Direview</div>
+                      <p class="stat-number" id="statBelum">0</p>
+                      <p class="section-sub small-sub">
+                        Total naskah dengan status
+                        <strong>baru, sedang direview, atau dikembalikan</strong
+                        >.
+                      </p>
+                    </div>
+
+                    <div class="card card-stat">
+                      <div class="card-label">Naskah Selesai Direview</div>
+                      <p class="stat-number" id="statSelesai">0</p>
+                      <p class="section-sub small-sub">
+                        Naskah yang sudah memiliki keputusan final reviewer.
+                      </p>
+                    </div>
+
+                    <div class="card card-stat">
+                      <div class="card-label">Total Naskah</div>
+                      <p class="stat-number" id="statTotal">0</p>
+                      <p class="section-sub small-sub">
+                        Jumlah seluruh naskah yang terhubung dengan akunmu saat
+                        ini.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="section section-overview-quick">
+                  <div class="section-header">
+                    <div>
+                      <h2>Shortcut Cepat</h2>
+                      <p class="section-sub">
+                        Akses cepat ke menu yang paling sering kamu gunakan.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="quick-actions-grid">
+                    <button
+                      class="quick-card"
+                      type="button"
+                      data-panel-target="inbox"
+                    >
+                      <div class="quick-icon">📥</div>
+                      <div class="quick-main">
+                        <div class="quick-title">Lihat Naskah Masuk</div>
+                        <div class="quick-sub">
+                          Kelola dan mulai review naskah baru.
+                        </div>
+                      </div>
+                    </button>
+
+                    <button
+                      class="quick-card"
+                      type="button"
+                      data-panel-target="history"
+                    >
+                      <div class="quick-icon">🕒</div>
+                      <div class="quick-main">
+                        <div class="quick-title">Riwayat Review</div>
+                        <div class="quick-sub">
+                          Pantau keputusan review yang sudah kamu buat.
+                        </div>
+                      </div>
+                    </button>
+
+                    <button
+                      class="quick-card"
+                      type="button"
+                      data-panel-target="profile"
+                    >
+                      <div class="quick-icon">🧑‍💼</div>
+                      <div class="quick-main">
+                        <div class="quick-title">Perbarui Profil</div>
+                        <div class="quick-sub">
+                          Sesuaikan data diri dan bidang keahlian.
+                        </div>
+                      </div>
+                    </button>
+
+                    <button
+                      class="quick-card"
+                      type="button"
+                      data-panel-target="guideline"
+                    >
+                      <div class="quick-icon">📘</div>
+                      <div class="quick-main">
+                        <div class="quick-title">Baca Panduan Review</div>
+                        <div class="quick-sub">
+                          Refresher singkat sebelum mulai menilai naskah.
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <aside class="overview-side">
+                <div class="card card-activity">
+                  <div class="section-header">
+                    <div>
+                      <h3>Riwayat Aktivitas Terbaru</h3>
+                      <p class="section-sub small-sub">
+                        Aktivitas terakhir terkait naskah dan review yang kamu
+                        lakukan.
+                      </p>
+                    </div>
+                  </div>
+                  <div id="recentActivityList" class="activity-list">
+                    <!-- Diisi oleh JS -->
+                  </div>
+                </div>
+              </aside>
+            </div>
+          </section>
+        </div>
+        <!-- FOOTER: diseragamkan dengan halaman lain -->
+        <footer class="footer">© Orange Press 2025</footer>
+      </main>
+    </div>
+
+    <script src="/assets/js/reviewer/dashboard.js"></script>
+    <script src="./../../assets/js/admin/utils/navbar.js"></script>
+
+    <script>
+      function setTopbarDate() {
+        const el = document.getElementById("topbarDate");
+        if (!el) return;
+
+        const now = new Date();
+        const formatted = now.toLocaleDateString("id-ID", {
+          weekday: "long",
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        });
+
+        el.textContent = formatted;
+      }
+      setTopbarDate();
+    </script>
+  </body>
+</html>

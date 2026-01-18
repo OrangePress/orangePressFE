@@ -1,0 +1,225 @@
+<!doctype html>
+
+<html
+  lang="en"
+  class="layout-wide customizer-hide"
+  data-assets-path="./../admin-style/assets/"
+  data-template="vertical-menu-template-free">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <title>Login OrangePress</title>
+
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="./../assets/style/auth.css" />
+
+  
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&ampdisplay=swap"
+      rel="stylesheet" />
+
+    <link rel="stylesheet" href="./../admin-style/assets/vendor/fonts/iconify-icons.css" />
+
+    <!-- Core CSS -->
+    <!-- build:css assets/vendor/css/theme.css -->
+
+    <link rel="stylesheet" href="./../admin-style/assets/vendor/libs/node-waves/node-waves.css" />
+
+    <link rel="stylesheet" href="./../admin-style/assets/vendor/css/core.css" />
+    <link rel="stylesheet" href="./../admin-style/assets/css/demo.css" />
+
+    <!-- Vendors CSS -->
+
+    <link rel="stylesheet" href="./../admin-style/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+
+    <!-- endbuild -->
+
+    <!-- Page CSS -->
+    <!-- Page -->
+    <link rel="stylesheet" href="./../admin-style/assets/vendor/css/pages/page-auth.css" />
+
+    <!-- Helpers -->
+    <script src="./../admin-style/assets/vendor/js/helpers.js"></script>
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+
+    <!--? Config: Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file. -->
+
+    <script src="./../admin-style/assets/js/config.js"></script>
+  </head>
+
+  <body>
+    <!-- Content -->
+
+    <div class="position-relative bg-login">
+      <div class="authentication-wrapper authentication-basic container-p-y">
+        <div class="authentication-inner py-6 mx-4">
+          <!-- Login -->
+          <div class="card p-sm-7 p-2">
+            <!-- Logo -->
+            <div class="app-brand justify-content-center mt-5">
+              <a href="./../" class="app-brand-link">
+                <span class="app-brand-text demo text-heading fw-semibold">Orange Press</span>
+              </a>
+            </div>
+            <!-- /Logo -->
+
+            <div class="card-body mt-1">
+              <h4 class="mb-1">Selamat datang di Orange Press! 👋🏻</h4>
+              <p class="mb-5">Silakan masuk ke akun Anda dan mulai petualangan</p>
+
+              <form id="formAuthentication" class="mb-5" action="" method="POST">
+                <div class="form-floating form-floating-outline mb-5 form-control-validation">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email "
+                    autofocus />
+                  <label for="email">Email</label>
+                </div>
+                <div class="mb-5">
+                  <div class="form-password-toggle form-control-validation">
+                    <div class="input-group input-group-merge">
+                      <div class="form-floating form-floating-outline">
+                        <input
+                          type="password"
+                          id="password"
+                          class="form-control"
+                          name="password"
+                          placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                          aria-describedby="password" />
+                        <label for="password">Password</label>
+                      </div>
+                      <span class="input-group-text cursor-pointer"
+                        ><i class="icon-base ri ri-eye-off-line icon-20px"></i
+                      ></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-5">
+                  <button class="btn d-grid w-100" type="submit" style="background-color: #ff7f27 !important; color: white !important;">Masuk</button>
+                </div>
+              </form>
+
+              <p class="text-center mb-5">
+                <span>Belum punya akun?</span>
+                <a href="./registration.html">
+                  <span>Buat akun</span>
+                </a>
+              </p>
+            </div>
+          </div>
+          <!-- /Login -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Core JS -->
+
+    <script src="./../admin-style/assets/vendor/libs/jquery/jquery.js"></script>
+
+    <script src="./../admin-style/assets/vendor/libs/popper/popper.js"></script>
+    <script src="./../admin-style/assets/vendor/js/bootstrap.js"></script>
+    <script src="./../admin-style/assets/vendor/libs/node-waves/node-waves.js"></script>
+
+    <script src="./../admin-style/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+    <script src="./../admin-style/assets/vendor/js/menu.js"></script>
+
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+
+    <!-- Main JS -->
+
+    <script src="./../admin-style/assets/js/main.js"></script>
+
+    <!-- Page JS -->
+
+    <!-- Place this tag before closing body tag for github widget button. -->
+    <script async="async" defer="defer" src="https://buttons.github.io/buttons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+  const LOGIN_API_URL = "http://localhost:3000/api/auth/login"; 
+  // ⬆️ ganti sesuai endpoint backend kamu
+
+  const form = document.getElementById("formAuthentication");
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    if (!email || !password) {
+      Swal.fire({
+        icon: "warning",
+        title: "Form belum lengkap",
+        text: "Email dan password wajib diisi"
+      });
+      return;
+    }
+
+    try {
+      // 🔄 Loading
+      Swal.fire({
+        title: "Sedang login...",
+        allowOutsideClick: false,
+        didOpen: () => Swal.showLoading()
+      });
+
+      const response = await fetch(LOGIN_API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email, password })
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || "Login gagal");
+      }
+
+      // ✅ Simpan token & user
+      localStorage.setItem("token", result.token);
+
+      // ✅ Success
+      Swal.fire({
+        icon: "success",
+        title: "Login berhasil",
+        text: `Selamat datang, ${result.user.fullname}`,
+        timer: 1500,
+        showConfirmButton: false
+      }).then(() => {
+        if (result.user.role === "penulis") {
+          window.location.href = "/dashboard/penulis/dashboard.html";
+          return;
+        } else if (result.user.role === "admin") {
+          window.location.href = "/dashboard/admin/dashboard.html";
+          return;
+        } else if (result.user.role === "reviewer") {
+          window.location.href = "/dashboard/reviewer/dashboard.html";
+        }
+      });
+
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Login gagal",
+        text: error.message
+      });
+      console.error("Login error:", error);
+    }
+  });
+</script>
+
+  </body>
+</html>

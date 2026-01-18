@@ -1,0 +1,231 @@
+:root {
+  --orange: #ff7f27;
+  --orange-dark: #e36a16;
+  --bg: #fff8f2;
+  --card: #ffffff;
+  --muted: #666;
+  --shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  margin: 0;
+  padding: 0;
+  color: #222;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: linear-gradient(135deg, #ffb974, var(--orange));
+  color: #fff;
+  box-shadow: var(--shadow);
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: #fff;
+  object-fit: contain;
+}
+
+header h1 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.btn-home {
+  background: #fff;
+  color: var(--orange-dark);
+  border: 0;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-home:hover {
+  background: var(--orange-dark);
+  color: #fff;
+}
+
+/* ===== GRID KATALOG ===== */
+.catalog {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 30px;
+  padding: 50px;
+  justify-items: start;
+}
+
+.book-card {
+  background: var(--card);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  transition: all 0.4s ease;
+  overflow: hidden;
+  text-align: center;
+  width: 250px;
+  padding-bottom: 20px;
+}
+
+.book-card img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.book-card h3 {
+  margin: 15px 0 8px;
+  color: var(--orange-dark);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.book-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.book-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Tombol Detail Buku */
+.btn-detail {
+  background: var(--orange);
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-detail:hover {
+  background: var(--orange-dark);
+  transform: scale(1.05);
+}
+
+/* ===== MODAL DETAIL ===== */
+.book-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  background: var(--card);
+  border-radius: 20px;
+  max-width: 1000px;
+  width: 100%;
+  box-shadow: var(--shadow);
+  padding: 40px;
+  position: relative;
+  animation: slideUp 0.4s ease;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: var(--orange);
+  border: none;
+  color: #fff;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.book-info {
+  display: flex;
+  gap: 30px;
+  /* flex-wrap: wrap; */
+}
+
+.book-info img {
+  width: 280px;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+
+.book-meta {
+  flex: 1; /* Agar mengambil sisa ruang yang tersedia */
+  min-width: 0; /* Penting agar child (sinopsis) bisa melakukan word-break */
+}
+
+.book-meta h2 {
+  color: var(--orange-dark);
+  margin-bottom: 20px;
+}
+
+.book-meta ul {
+  list-style: none;
+  padding: 0;
+  line-height: 1.8;
+}
+
+.book-meta li strong {
+  color: var(--orange-dark);
+}
+
+#book-sinopsis {
+  margin-top: 20px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted);
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word; /* Tambahan untuk memastikan kata panjang pecah */
+  text-align: justify;
+}
+
+/* Animasi */
+@keyframes fadeIn {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(40px); opacity: 0 }
+  to { transform: translateY(0); opacity: 1 }
+}
+
+@media (max-width: 768px) {
+  .book-info {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .book-info img {
+    width: 90%;
+    height: auto;
+  }
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/style/penulis.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrap">
+      <div id="sidebar-container"></div>
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <h1 id="pageTitle">Dashboard Overview</h1>
+            <div class="lead">Ringkasan cepat & kontrol semua aktivitas penerbitan.</div>
+          </div>
+        </header>
+
+        <section id="paket" class="panel active-panel mt-4">
+          <h2>Pilih Paket</h2>
+
+          <div id="packages-loading" class="text-center p-5">Memuat paket...</div>
+          <div id="packages-error" class="alert alert-danger" style="display: none"></div>
+
+          <div id="packages-container" class="card-row" style="display: none"></div>
+        </section>
+
+        <div class="modal fade" id="paymentModal" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Pembayaran: <span id="displayPackageTitle"></span></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+
+              <div class="modal-body">
+                <div class="text-center mb-4">
+                  <h6>Scan QRIS</h6>
+                  <img src="/assets/img/qr.jpg" alt="QRIS" class="img-fluid" style="max-width: 200px" />
+                </div>
+
+                <form id="paymentForm">
+                  <input type="hidden" id="packageId" name="packageId" />
+
+                  <div class="mb-3">
+                    <label class="form-label">Nama Bank</label>
+                    <input type="text" class="form-control" name="bankName" placeholder="Contoh: BCA" required />
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Nomor Rekening</label>
+                    <input type="text" class="form-control" name="accountNumber" placeholder="Contoh: 1234567890" required />
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Atas Nama</label>
+                    <input type="text" class="form-control" name="accountHolder" placeholder="Contoh: ULBI" required />
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Upload Bukti Pembayaran</label>
+                    <input type="file" class="form-control" name="file" accept="image/*" required />
+                  </div>
+
+                  <button type="submit" id="btnSubmitPayment" class="btn text-white w-100" style="background-color: #ff7f27;">
+                    Kirim Pembayaran
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./../../assets/js/admin/utils/navbar.js"></script>
+    <script src="/assets/js/penulis/data/paket.js"></script>
+  </body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/assets/style/reviewer.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrap">
+      <div id="sidebar-container"></div>
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <h1 id="pageTitle">Dashboard Overview</h1>
+            <div class="lead">
+              Ringkasan cepat & kontrol semua aktivitas penerbitan.
+            </div>
+          </div>
+        </header>
+
+        <div class="main-content">
+          <!-- ================== PANEL: RIWAYAT REVIEW ================== -->
+          <section class="panel active-panel" id="history">
+            <div class="section-header">
+              <div>
+                <h2>Riwayat Review</h2>
+                <p class="section-sub">
+                  Catatan lengkap review yang telah kamu lakukan.
+                </p>
+              </div>
+              <div class="filters-bar">
+                <select id="historyStatus">
+                  <option value="all">Semua keputusan</option>
+                  <option value="Diterima">Diterima</option>
+                  <option value="Diterima dengan Perbaikan">
+                    Diterima dengan Perbaikan
+                  </option>
+                  <option value="Ditolak">Ditolak</option>
+                </select>
+                <input type="date" id="historyFrom" />
+                <input type="date" id="historyTo" />
+                <button class="btn-secondary btn-sm" id="historyResetBtn">
+                  Reset
+                </button>
+              </div>
+            </div>
+
+            <div id="riwayatList" class="list"></div>
+          </section>
+
+          <!-- ============== MODAL DETAIL REVIEW ============== -->
+          <div id="reviewDetailModal" class="modal" style="display: none">
+            <div class="modal-box review-detail-box">
+              <h2>Detail Review</h2>
+
+              <p><strong>Judul Naskah:</strong> <span id="rdJudul">-</span></p>
+
+              <p><strong>Keputusan:</strong> <span id="rdKeputusan">-</span></p>
+
+              <p>
+                <strong>Tanggal Review:</strong> <span id="rdTanggal">-</span>
+              </p>
+
+              <!-- Catatan Reviewer hanya ditampilkan jika ada (misal: saat revisi) -->
+              <div
+                id="rdCatatanSection"
+                style="margin-top: 1rem; display: none"
+              >
+                <p><strong>Catatan Reviewer:</strong></p>
+                <p
+                  id="rdCatatan"
+                  class="detail-desc"
+                  style="
+                    background: #f9f9f9;
+                    padding: 0.75rem;
+                    border-radius: 4px;
+                  "
+                >
+                  -
+                </p>
+              </div>
+
+              <!-- Catatan Editor (jika ada) -->
+              <div
+                id="rdEditorNoteSection"
+                style="margin-top: 1rem; display: none"
+              >
+                <p><strong>Catatan Editor:</strong></p>
+                <p
+                  id="rdEditorNote"
+                  class="detail-desc"
+                  style="
+                    background: #f9f9f9;
+                    padding: 0.75rem;
+                    border-radius: 4px;
+                  "
+                >
+                  -
+                </p>
+              </div>
+
+              <div class="modal-actions" style="margin-top: 1.5rem">
+                <button class="btn-secondary" id="closeReviewDetailBtn">
+                  Tutup
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- FOOTER: diseragamkan dengan halaman lain -->
+        <footer class="footer">© Orange Press 2025</footer>
+      </main>
+    </div>
+
+    <script src="./../../assets/js/admin/utils/navbar.js"></script>
+    <script src="/assets/js/reviewer/riwayat_review.js"></script>
+  </body>
+</html>

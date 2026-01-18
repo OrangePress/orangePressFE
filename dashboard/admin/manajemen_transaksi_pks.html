@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/assets/style/admin.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrap">
+      <div id="sidebar-container"></div>
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <h1 id="pageTitle">Dashboard Overview</h1>
+            <div class="lead">
+              Ringkasan cepat & kontrol semua aktivitas penerbitan.
+            </div>
+          </div>
+        </header>
+
+        <!-- ========================= -->
+        <!-- PANEL: MANAJEMEN TRANSAKSI DAN PKS -->
+        <!-- ========================= -->
+        <section class="panel" id="payments">
+          <div class="card">
+            <h3>Manajemen Transaksi dan PKS</h3>
+            <p class="muted">
+              Kelola dan verifikasi transaksi pembayaran serta file PKS penulis.
+            </p>
+
+            <div id="paymentsList">
+              <div class="payment-item">
+                <div class="payment-left">
+                  <div class="payment-proof-wrap">
+                    <!-- Contoh: Jika bukti adalah gambar -->
+                    <img
+                      src="../assets/uploads/bukti_transfer_001.jpg"
+                      class="payment-proof"
+                      alt="Bukti Transfer"
+                    />
+
+                    <button type="button" class="btn-detail payment-detail-btn">
+                      Detail Transaksi
+                    </button>
+                  </div>
+
+                  <div class="payment-info">
+                    <strong>Budi Santoso</strong>
+                    <div class="pack">Paket Premium</div>
+                    <div class="muted">Rp 750.000 • 12 Jan 2026</div>
+                  </div>
+                </div>
+
+                <div class="payment-status">
+                  <select class="status-dropdown status-pending">
+                    <option value="pending" selected>Belum dikonfirmasi</option>
+                    <option value="confirmed">Terkonfirmasi</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- MODAL DETAIL TRANSAKSI PEMBAYARAN -->
+        <div class="modal" id="paymentDetailModal">
+          <div class="modal-content payment-detail-modal">
+            <div class="payment-detail-header">
+              <h3>Detail Transaksi Pembayaran</h3>
+              <button class="close-detail" id="closePaymentDetailBtn">✕</button>
+            </div>
+
+            <div class="payment-detail-body">
+              <div class="payment-detail-image">
+                <img id="paymentDetailImg" src="" alt="Bukti Transaksi Penuh" />
+              </div>
+              <div class="payment-detail-info">
+                <p>
+                  <strong>Nama Penulis</strong><br />
+                  <span id="paymentDetailAuthor">-</span>
+                </p>
+                <p>
+                  <strong>Paket</strong><br />
+                  <span id="paymentDetailPackage">-</span>
+                </p>
+                <p>
+                  <strong>Jumlah Pembayaran</strong><br />
+                  <span id="paymentDetailAmount">-</span>
+                </p>
+                <p>
+                  <strong>Tanggal Pembayaran</strong><br />
+                  <span id="paymentDetailDate">-</span>
+                </p>
+                <hr />
+                <p>
+                  <strong>Nama Bank</strong><br />
+                  <span id="paymentDetailBank">-</span>
+                </p>
+                <p>
+                  <strong>Nomor Rekening</strong><br />
+                  <span id="paymentDetailRek">-</span>
+                </p>
+                <p>
+                  <strong>Atas Nama Rekening</strong><br />
+                  <span id="paymentDetailAtasNama">-</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="detail-footer payment-detail-footer">
+              <button class="detail-close-footer" id="downloadPaymentImgBtn">
+                Download Gambar
+              </button>
+              <button class="detail-close-footer" id="downloadPaymentPksBtn">
+                Download File PKS
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="./../../assets/js/admin/utils/navbar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/assets/js/admin/data/transaksi.js"></script>
+  </body>
+</html>

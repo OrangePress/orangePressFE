@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/assets/style/admin.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrap">
+      <div id="sidebar-container"></div>
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <h1 id="pageTitle">Dashboard Overview</h1>
+            <div class="lead">
+              Ringkasan cepat & kontrol semua aktivitas penerbitan.
+            </div>
+          </div>
+        </header>
+
+        <!-- ======================================== -->
+        <!-- PANEL: MANAJEMEN REVIEW NASKAH (FORM KIRIM) -->
+        <!-- ======================================== -->
+        <section class="panel" id="reviewers">
+          <div class="panel-header">
+            <h2>Manajemen Review Naskah</h2>
+            <p class="lead">
+              Kelola proses pengiriman dan review naskah oleh reviewer.
+            </p>
+          </div>
+
+          <div class="catalog-admin-layout">
+            <!-- FORM KATALOG -->
+            <form id="catalog-form" class="catalog-form">
+              <h3 id="">Pilih Buku</h3>
+
+              <div class="form-grid">
+                <div class="form-group full">
+                  <label for="book"
+                    >Pilih Buku Untuk Di Teruskan Ke Reviewer</label
+                  >
+                  <select name="book" id="book">
+                    <!-- Diisi oleh JS -->
+                  </select>
+                </div>
+
+                <div class="form-group full">
+                  <label for="catDesc">Sinopsis</label>
+                  <textarea
+                    id="catDesc"
+                    rows="4"
+                    placeholder="Ringkasan singkat isi buku"
+                    disabled
+                  ></textarea>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn" id="catalogSaveBtn">
+                  Teruskan ke Reviewer
+                </button>
+                <button type="button" class="btn-small" id="catalogResetBtn">
+                  Reset Form
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="panel-header" style="margin-top: 2rem">
+            <h2>Manajemen Review Naskah ke Penulis</h2>
+            <p class="lead">Kelola proses pengiriman naskah ke Penulis.</p>
+          </div>
+
+          <div class="catalog-admin-layout">
+            <!-- FORM KATALOG -->
+            <form id="author-form" class="catalog-form">
+              <h3>Pilih Buku</h3>
+              <div class="form-grid">
+                <div class="form-group full">
+                  <label for="bookAuthor"
+                    >Pilih Buku Untuk Di Teruskan Ke Penulis</label
+                  >
+                  <select name="book" id="bookAuthor"></select>
+                </div>
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="btn">
+                  Teruskan ke Penulis
+                </button>
+                <button type="button" class="btn-small" id="catalogResetBtn">
+                  Reset Form
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- TABEL PENGIRIMAN -->
+          <div class="card" style="margin-top: 1.5rem">
+            <h3>Daftar Naskah</h3>
+            <p class="muted">
+              Daftar naskah yang sedang dikirim ke reviewer akan tampil di sini.
+            </p>
+
+            <div class="table-wrapper">
+              <table id="reviewerTable">
+                <thead>
+                  <tr>
+                    <th>Judul Naskah</th>
+                    <th>Penulis</th>
+                    <th>Reviewer</th>
+                    <th>Nomor Telepon</th>
+                    <th>Nama Bank</th>
+                    <th>Nomor Rekening</th>
+                    <th>Atas Nama Rekening</th>
+                    <th>Deadline</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Nanti diisi lewat admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- MODAL ASSIGN REVIEWER (DIPERBARUI DENGAN DROPDOWN) -->
+        <div id="assignModal" class="modal" style="display: none">
+          <div class="modal-content" style="width: 500px; max-width: 90%">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 1rem;
+              "
+            >
+              <h3>Assign Reviewer</h3>
+              <button
+                id="closeAssignModal"
+                style="
+                  background: none;
+                  border: none;
+                  font-size: 1.5rem;
+                  cursor: pointer;
+                "
+              >
+                ✕
+              </button>
+            </div>
+
+            <form id="assignForm">
+              <input type="hidden" id="manuscriptIdInput" />
+
+              <!-- Dropdown Reviewer -->
+              <div style="margin-bottom: 1rem">
+                <label for="reviewerSelect">Pilih Reviewer</label><br />
+                <select
+                  id="reviewerSelect"
+                  required
+                  style="width: 100%; padding: 0.5rem; margin-top: 0.25rem"
+                >
+                  <option value="">-- Pilih Reviewer --</option>
+                  <!-- Opsi akan diisi oleh JavaScript -->
+                </select>
+              </div>
+
+              <!-- Deadline -->
+              <div style="margin-bottom: 1rem">
+                <label for="deadlineReview">Deadline Review</label><br />
+                <input
+                  type="date"
+                  id="deadlineReview"
+                  required
+                  style="width: 100%; padding: 0.5rem; margin-top: 0.25rem"
+                />
+              </div>
+
+              <!-- Catatan -->
+              <div style="margin-bottom: 1rem">
+                <label for="noteForReviewer">Catatan untuk Reviewer</label
+                ><br />
+                <textarea
+                  id="noteForReviewer"
+                  rows="3"
+                  style="width: 100%; padding: 0.5rem; margin-top: 0.25rem"
+                ></textarea>
+              </div>
+
+              <div style="text-align: right">
+                <button
+                  type="button"
+                  id="cancelAssign"
+                  class="btn-secondary"
+                  style="padding: 0.5rem 1rem; margin-right: 0.5rem"
+                >
+                  Batal
+                </button>
+                <button
+                  type="submit"
+                  class="btn-primary"
+                  style="
+                    padding: 0.5rem 1rem;
+                    background: #ff6b00;
+                    color: white;
+                    border: none;
+                  "
+                >
+                  Kirim
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="./../../assets/js/admin/utils/navbar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/assets/js/admin/data/review_naskah.js"></script>
+  </body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/assets/style/admin.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrap">
+      <div id="sidebar-container"></div>
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <h1 id="pageTitle">Dashboard Overview</h1>
+            <div class="lead">
+              Ringkasan cepat & kontrol semua aktivitas penerbitan.
+            </div>
+          </div>
+        </header>
+
+        <!-- ============================= -->
+        <!-- PANEL: OVERVIEW / BERANDA    -->
+        <!-- ============================= -->
+        <section class="panel active-panel" id="overview">
+          <div class="panel-header">
+            <div>
+              <h2>Beranda</h2>
+              <p class="lead">
+                Pantau statistik utama, aktivitas terbaru, dan akses cepat menu
+                penting Orange Press.
+              </p>
+            </div>
+            <div class="overview-date">
+              <div id="overviewUpdatedAt">—</div>
+            </div>
+          </div>
+
+          <!-- STATISTIK UTAMA -->
+          <div class="cards-grid overview-grid">
+            <div class="card stat-card">
+              <div class="stat-icon">👥</div>
+              <div class="stat-main">
+                <div class="stat-label">Penulis Terdaftar</div>
+                <div class="stat-number" id="statAuthors">—</div>
+                <div class="stat-meta">
+                  <span class="badge-soft">Akun Penulis</span>
+                  <span class="stat-note"
+                    >Termasuk penulis premium & reguler.</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="card stat-card">
+              <div class="stat-icon">📚</div>
+              <div class="stat-main">
+                <div class="stat-label">Naskah Aktif</div>
+                <div class="stat-number" id="statManuscripts">—</div>
+                <div class="stat-meta">
+                  <span class="badge-soft">Antrian Naskah</span>
+                  <span class="stat-note"
+                    >Naskah dalam proses penilaian & editing.</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="card stat-card">
+              <div class="stat-icon">💳</div>
+              <div class="stat-main">
+                <div class="stat-label">Pembayaran Terkonfirmasi</div>
+                <div class="stat-number" id="statPayments">—</div>
+                <div class="stat-meta">
+                  <span class="badge-soft">Keuangan</span>
+                  <span class="stat-note"
+                    >Pembayaran paket publikasi yang sudah valid.</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="card stat-card">
+              <div class="stat-icon">📖</div>
+              <div class="stat-main">
+                <div class="stat-label">Buku Terbit</div>
+                <div class="stat-number" id="statPublished">—</div>
+                <div class="stat-meta">
+                  <span class="badge-soft">Katalog</span>
+                  <span class="stat-note"
+                    >Buku yang sudah masuk katalog Orange Press.</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- AKTIVITAS & SHORTCUT -->
+          <div class="overview-bottom">
+            <!-- Aktivitas terbaru -->
+            <div class="card overview-activity">
+              <div class="overview-card-header">
+                <h3>Aktivitas Terbaru</h3>
+                <span class="muted"
+                  >Log ringkas aktivitas sistem 24 jam terakhir.</span
+                >
+              </div>
+              <ul class="activity-list" id="activityList">
+                <li>
+                  <span class="activity-dot activity-naskah"></span>
+                  <div class="activity-text">
+                    <strong>Naskah baru didaftarkan</strong>
+                    <p class="muted">
+                      Cek menu <b>Manajemen Naskah</b> untuk meninjau dan
+                      mengubah status.
+                    </p>
+                  </div>
+                  <span class="activity-time">Baru saja</span>
+                </li>
+                <li>
+                  <span class="activity-dot activity-payment"></span>
+                  <div class="activity-text">
+                    <strong>Pembayaran masuk menunggu verifikasi</strong>
+                    <p class="muted">
+                      Verifikasi bukti transfer di menu
+                      <b>Manajemen Transaksi dan PKS</b>.
+                    </p>
+                  </div>
+                  <span class="activity-time">10 menit lalu</span>
+                </li>
+                <li>
+                  <span class="activity-dot activity-author"></span>
+                  <div class="activity-text">
+                    <strong>Penulis baru membuat akun</strong>
+                    <p class="muted">
+                      Lengkapi data & kelola profil di <b>Manajemen Akun</b>.
+                    </p>
+                  </div>
+                  <span class="activity-time">1 jam lalu</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Shortcut cepat -->
+            <div class="card overview-shortcuts">
+              <div class="overview-card-header">
+                <h3>Shortcut Cepat</h3>
+                <span class="muted"
+                  >Akses menu yang paling sering digunakan hanya dengan satu
+                  klik.</span
+                >
+              </div>
+
+              <div class="quick-actions">
+                <button type="button" class="chip" data-jump="manuscripts">
+                  Kelola Naskah
+                </button>
+                <button type="button" class="chip" data-jump="payments">
+                  Verifikasi Pembayaran
+                </button>
+                <button type="button" class="chip" data-jump="authors">
+                  Data Penulis
+                </button>
+                <button type="button" class="chip" data-jump="catalog">
+                  Atur Katalog Buku
+                </button>
+                <button type="button" class="chip" data-jump="packages">
+                  Paket Publikasi
+                </button>
+              </div>
+
+              <div class="overview-hint">
+                <strong>Tips Admin:</strong>
+                Pastikan status <u>pembayaran sudah terkonfirmasi</u> sebelum
+                naskah diteruskan ke reviewer, agar alur kerja keuangan dan
+                editorial tetap rapi.
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./../../assets/js/admin/utils/navbar.js"></script>
+    <script src="/assets/js/admin/data/dashboard.js"></script>
+  </body>
+</html>

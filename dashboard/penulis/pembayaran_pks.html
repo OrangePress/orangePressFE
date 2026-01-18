@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/assets/style/penulis.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrap">
+      <div id="sidebar-container"></div>
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <h1 id="pageTitle">Dashboard Overview</h1>
+            <div class="lead">
+              Ringkasan cepat & kontrol semua aktivitas penerbitan.
+            </div>
+          </div>
+        </header>
+
+        <!-- ====================================================================================
+         PEMBAYARAN & PKS
+         ==================================================================================== -->
+        <section id="pembayaran" class="panel active-panel">
+          <div class="upload-row">
+            <div class="upload-card">
+              <h2 class="pks-title">
+                <span>📝</span> Upload Perjanjian Kerjasama
+              </h2>
+
+              <form id="agreementForm">
+                <div class="upload-box">
+                  <label class="file-label" for="pksFile">
+                    <input
+                      type="file"
+                      id="pksFile"
+                      name="file"
+                      accept=".pdf"
+                      hidden
+                    />
+                    <span>📁 Pilih File PDF</span>
+                  </label>
+
+                  <p id="pksFileName" class="file-name">
+                    Tidak ada file yang dipilih
+                  </p>
+
+                  <button id="uploadPksBtn" class="btn-upload" type="submit">
+                    ⬆️ Upload File PKS
+                  </button>
+                </div>
+              </form>
+
+              <a
+                href="https://drive.google.com/drive/folders/1GCYITXpM4X6vq2jX7A6FU9mn6mkCdYxF"
+                target="_blank"
+                class="pks-template-inside"
+              >
+                📄 Download Template PKS
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./../../assets/js/admin/utils/navbar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/assets/js/penulis/data/pks.js"></script>
+  </body>
+</html>

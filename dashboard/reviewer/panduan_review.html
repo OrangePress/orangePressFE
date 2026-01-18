@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/assets/style/reviewer.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrap">
+      <div id="sidebar-container"></div>
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <h1 id="pageTitle">Dashboard Overview</h1>
+            <div class="lead">
+              Ringkasan cepat & kontrol semua aktivitas penerbitan.
+            </div>
+          </div>
+        </header>
+
+        <div class="main-content">
+          <!-- ================== PANEL: PANDUAN REVIEW ================== -->
+          <section class="panel active-panel" id="guideline">
+            <div class="section">
+              <h2>Panduan Review Naskah</h2>
+              <p class="section-sub">
+                Ikuti pedoman berikut agar proses penilaian naskah berjalan
+                objektif, konsisten, dan membantu penulis memperbaiki karyanya.
+              </p>
+            </div>
+
+            <div class="guidelines-grid">
+              <div class="card guide-step">
+                <div class="guide-badge">1</div>
+                <h3>Alur Review</h3>
+                <ol class="guide-list">
+                  <li>Baca keseluruhan naskah secara ringkas (skimming).</li>
+                  <li>
+                    Cek kesesuaian topik dengan fokus penerbit dan bidangmu.
+                  </li>
+                  <li>
+                    Evaluasi struktur naskah (bab, subbab, kelogisan alur).
+                  </li>
+                  <li>
+                    Nilai kedalaman materi, kebaruan, dan relevansi referensi.
+                  </li>
+                  <li>
+                    Tulis catatan yang spesifik dan solutif untuk penulis.
+                  </li>
+                  <li>
+                    Tentukan keputusan akhir: diterima, diterima dengan
+                    perbaikan, atau ditolak.
+                  </li>
+                </ol>
+              </div>
+
+              <div class="card guide-step">
+                <div class="guide-badge">2</div>
+                <h3>Kriteria Penilaian</h3>
+                <ul class="guide-list">
+                  <li>
+                    <strong>Orisinalitas:</strong> sejauh mana naskah memberikan
+                    kontribusi baru.
+                  </li>
+                  <li>
+                    <strong>Kedalaman materi:</strong> ketepatan konsep,
+                    analisis, dan pembahasan.
+                  </li>
+                  <li>
+                    <strong>Struktur & sistematika:</strong> kerapian susunan
+                    bab dan alur logika.
+                  </li>
+                  <li>
+                    <strong>Kualitas bahasa:</strong> kejelasan, kerapian tata
+                    bahasa, dan konsistensi istilah.
+                  </li>
+                  <li>
+                    <strong>Referensi:</strong> kemutakhiran dan relevansi
+                    sumber pustaka.
+                  </li>
+                </ul>
+              </div>
+
+              <div class="card guide-step">
+                <div class="guide-badge">3</div>
+                <h3>Catatan Reviewer yang Baik</h3>
+                <ul class="guide-list">
+                  <li>Gunakan bahasa profesional dan membangun.</li>
+                  <li>Sertakan contoh konkret saat mengkritik suatu bagian.</li>
+                  <li>
+                    Bedakan antara <em>wajib diperbaiki</em> dan
+                    <em>opsional</em>.
+                  </li>
+                  <li>
+                    Hindari komentar yang terlalu umum seperti “perlu
+                    diperbaiki” tanpa penjelasan.
+                  </li>
+                  <li>Fokus pada naskah, bukan pada penulis.</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </div>
+        <!-- FOOTER: diseragamkan dengan halaman lain -->
+        <footer class="footer">© Orange Press 2025</footer>
+      </main>
+    </div>
+
+    <script src="./../../assets/js/admin/utils/navbar.js"></script>
+  </body>
+</html>

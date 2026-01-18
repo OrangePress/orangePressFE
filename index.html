@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orange Press - Penerbit ULBI</title>
+    <link rel="stylesheet" href="./assets/style/landing.css" />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      /* Sedikit jarak biar section gak ketutupan navbar */
+      section {
+        scroll-margin-top: 80px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header class="navbar">
+      <div class="logo-section">
+        <img
+          src="./assets/img/logoorangepress.png"
+          alt="Logo OrangePress"
+          class="logo"
+        />
+        <span class="brand">ORANGE PRESS</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#hero" class="active">Beranda</a>
+        <a href="#layanan">Tentang</a>
+        <a href="./katalog.html">Katalog</a>
+        <a href="#paket">Paket</a>
+        <a href="#kontak">Kontak</a>
+      </nav>
+      <!-- Tombol LOGIN diarahkan ke halaman register.html -->
+      <button
+        class="btn-primary"
+        onclick="window.location.href='/auth/login.html'"
+      >
+        LOGIN →
+      </button>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+      <div class="hero-text">
+        <div class="logo-container">
+          <img
+            src="./assets/img/LOGOULBI.png"
+            alt="Logo ULBI"
+            class="logo-ulbi"
+          />
+        </div>
+        <h1>Selamat Datang di <span class="highlight">Orange Press</span></h1>
+        <p>
+          Orange Press adalah penerbit buku milik Universitas Logistik dan
+          Bisnis Internasional.
+        </p>
+        <div class="hero-buttons">
+          <a href="https://drive.google.com/drive/folders/1QuwzPd5cSYQQ2unY0iKvzXEZPvEkWM32" class="btn-dark">Template →</a>
+          <!-- Tombol ini akan scroll ke bagian alur -->
+          <button
+            class="btn-outline"
+            onclick="document.getElementById('alur').scrollIntoView({ behavior: 'smooth' })"
+          >
+            Alur Penerbitan →
+          </button>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <div class="book-frame large">
+          <img
+            src="./assets/img/taman (15).jpg"
+            alt="Buku utama"
+            class="main-book"
+          />
+        </div>
+        <div class="book-frame small">
+          <img
+            src="./assets/img/taman (22).jpg"
+            alt="Tumpukan buku"
+            class="stacked-book"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Alur Penerbitan -->
+    <section id="alur" class="alur">
+      <h2>Alur Penerbitan</h2>
+      <div class="timeline">
+        <div class="step">
+          <div class="circle">1</div>
+          <div class="content">
+            <h3>Pengajuan Naskah</h3>
+            <p>
+              Penulis melakukan cek plagiarisme (maks. Turnitin 25%) dan
+              mengirimkan naskah untuk dinilai editor (±1 minggu).
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="circle">2</div>
+          <div class="content">
+            <h3>Review & Perjanjian</h3>
+            <p>
+              Naskah direview, diterima/tolak/revisi. Jika diterima, penulis
+              menandatangani perjanjian & melakukan pembayaran.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="circle">3</div>
+          <div class="content">
+            <h3>Pengelolaan Naskah</h3>
+            <p>
+              Proses editing layout & desain dimulai. Penulis menerima purwarupa
+              (dummy) sebagai acuan produksi.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="circle">4</div>
+          <div class="content">
+            <h3>Produksi & Publikasi</h3>
+            <p>
+              Naskah dicetak & dipublikasikan di berbagai kanal. Proses
+              penerbitan selesai.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Daftar Layanan -->
+    <section id="layanan" class="layanan-section">
+      <div class="layanan-container">
+        <!-- Bagian FOTO -->
+        <div class="layanan-image">
+          <img
+            src="./assets/img/perpus (19).jpg"
+            alt="Mahasiswa di perpustakaan"
+          />
+        </div>
+
+        <!-- Bagian TEKS -->
+        <div class="layanan-content">
+          <span class="section-badge">Penerbit Orange Press</span>
+          <h2>Daftar Layanan</h2>
+          <p>
+            Orange Press siap membantu proses penerbitan untuk sivitas ULBI
+            maupun masyarakat umum. Sejak tahun 2025, Orange Press mendukung
+            para akademisi dan profesional untuk menyebarluaskan karya-karya
+            mereka lewat berbagai platform agar bisa menjangkau komunitas ilmiah
+            secara lebih luas.
+          </p>
+
+          <ul class="layanan-list">
+            <li>Pengurusan ISBN</li>
+            <li>Layanan Terpadu Penerbitan</li>
+            <li>Penyuntingan dan Pengaturan Tata Letak</li>
+            <li>Desain Sampul Buku</li>
+            <li>Pemasaran Buku</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Paket dan Pembayaran -->
+    <section id="paket" class="paket-section">
+      <h2 class="paket-title">Pilihan Paket dan Pembayaran</h2>
+
+      <div class="paket-grid" id="paketGrid">
+        <!-- DATA DARI BACKEND -->
+      </div>
+    </section>
+
+
+
+    <!-- ======== SECTION: Ajakan ======== -->
+    <section class="ajakan">
+      <div class="ajakan-content">
+        <h2>Punya naskah yang belum diterbitkan?</h2>
+        <p>
+          Tunggu apa lagi? Ajukan naskahmu ke
+          <strong>Orange Press</strong> sekarang juga!
+        </p>
+        <button class="btn-primary" onclick="cekLoginDanAjukanNaskah()">
+          Ajukan Naskah →
+        </button>
+      </div>
+
+      <div class="ajakan-img">
+        <img src="./assets/img/logic (5) - Copy.jpg" alt="Ajukan Naskah" />
+      </div>
+    </section>
+
+    <!-- ======== SCRIPT: Cek Login dan Arahkan ======== -->
+    <script>
+      /**
+       * Mengecek status login pengguna sebelum melanjutkan
+       * Jika sudah login → ke halaman registrasi naskah
+       * Jika belum login → tampilkan alert lalu ke halaman login
+       */
+      function cekLoginDanAjukanNaskah() {
+        const loggedIn = localStorage.getItem("token");
+
+        if (loggedIn === "true") {
+          window.location.href = "/auth/register.html";
+        } else {
+          alert("Silakan login terlebih dahulu untuk mengajukan naskah.");
+          window.location.href = "/auth/login.html";
+        }
+      }
+    </script>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <!-- Kolom 1: Logo dan Kontak -->
+        <div class="footer-column">
+          <img
+            src="./assets/img/logoorangepress.png"
+            alt="Orange Press"
+            class="logo-op"
+          />
+          <h3>Orange Press</h3>
+          <p>Jl. Sariasih No. 54, Bandung 40151</p>
+          <p>628.123-456-7890 Fax. 628.123-456-7890</p>
+          <p>orangepress@ulbi.ac.id</p>
+          <p>orangepress.co.id</p>
+          <footer id="kontak" class="footer"></footer>
+        </div>
+
+        <!-- Kolom 2: Tentang Kami -->
+        <div class="footer-column">
+          <h4>TENTANG KAMI</h4>
+          <ul>
+            <li><a href="#tentang">› Tentang</a></li>
+            <li><a href="#sejarah">› Sejarah</a></li>
+            <li><a href="#ulbi">› ULBI</a></li>
+            <li><a href="#katalog">› Katalog</a></li>
+          </ul>
+        </div>
+
+        <!-- Kolom 3: Alur Penerbitan -->
+        <div class="footer-column">
+          <h4>ALUR PENERBITAN</h4>
+          <ul>
+            <li><a href="#pengajuan">› Pengajuan Naskah</a></li>
+            <li><a href="#review">› Review Dan Perjanjian</a></li>
+            <li><a href="#pengelolaan">› Pengelolaan Naskah</a></li>
+            <li><a href="#produksi">› Produksi & Publikasi</a></li>
+          </ul>
+        </div>
+
+        <!-- Kolom 4: Paket -->
+        <div class="footer-column">
+          <h4>PAKET</h4>
+          <ul>
+            <li><a href="#paket10">› 10 Eksemplar</a></li>
+            <li><a href="#paket15">› 15 Eksemplar</a></li>
+            <li><a href="#paket25">› 25 Eksemplar</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">© Orange Press 2025</div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+      const PAKET_API_URL = "http://localhost:3000/api/packages";
+      
+
+      async function fetchPaket() {
+        try {
+          // SweetAlert Loading
+          Swal.fire({
+            title: "Memuat paket...",
+            allowOutsideClick: false,
+            didOpen: () => Swal.showLoading(),
+          });
+
+          const res = await fetch(PAKET_API_URL);
+          if (!res.ok) throw new Error("Gagal mengambil data paket");
+
+          const paketData = await res.json();
+          renderPaket(paketData);
+
+          Swal.close();
+        } catch (error) {
+          Swal.fire({
+            icon: "error",
+            title: "Gagal",
+            text: "Paket tidak dapat dimuat",
+          });
+          console.error(error);
+        }
+      }
+
+      function renderPaket(pakets) {
+        const grid = document.getElementById("paketGrid");
+        grid.innerHTML = "";
+
+        pakets
+          .filter((p) => p.isActive)
+          .forEach((paket) => {
+            const card = document.createElement("div");
+            card.className = "paket-card";
+
+            card.innerHTML = `
+          <h3>${paket.title}</h3>
+          <p class="price">Rp. ${formatRupiah(paket.price)}</p>
+          <ul>
+            ${paket.benefits.map((item) => `<li>${item}</li>`).join("")}
+          </ul>
+          <button class="btn-primary" onclick="cekLoginDanPilihPaket('${
+            paket._id
+          }')">
+            Pilih Paket →
+          </button>
+        `;
+
+            grid.appendChild(card);
+          });
+      }
+
+      function formatRupiah(number) {
+        return new Intl.NumberFormat("id-ID").format(number);
+      }
+
+      // Contoh handler pilih paket
+      function cekLoginDanPilihPaket(paketId) {
+        // Contoh cek login
+        const isLogin = localStorage.getItem("token");
+
+        if (!isLogin) {
+          Swal.fire({
+            icon: "warning",
+            title: "Harus Login",
+            text: "Silakan login terlebih dahulu untuk memilih paket",
+          }).then(() => {
+            window.location.href = "auth/login.html";
+          });
+          return;
+        }
+
+        // Simpan paket terpilih
+        localStorage.setItem("selected_paket", paketId);
+
+        Swal.fire({
+          icon: "success",
+          title: "Paket Dipilih",
+          text: "Silakan lanjutkan ke pembayaran",
+        }).then(() => {
+          window.location.href = "/pembayaran.html";
+        });
+      }
+
+      // Load paket saat halaman dibuka
+      fetchPaket();
+    </script>
+  </body>
+</html>

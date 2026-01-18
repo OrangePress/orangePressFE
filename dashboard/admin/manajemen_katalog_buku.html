@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/assets/style/admin.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrap">
+      <div id="sidebar-container"></div>
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <h1 id="pageTitle">Dashboard Overview</h1>
+            <div class="lead">
+              Ringkasan cepat & kontrol semua aktivitas penerbitan.
+            </div>
+          </div>
+        </header>
+
+        <!-- PANEL: KATALOG BUKU -->
+        <section class="panel" id="catalog">
+          <div class="panel-header">
+            <h2>Manajemen Katalog Buku</h2>
+            <p class="lead">
+              Kelola data buku yang ditampilkan di halaman katalog Orange Press.
+            </p>
+          </div>
+
+          <div class="catalog-admin-layout">
+            <!-- FORM KATALOG -->
+            <form id="catalogForm" class="catalog-form">
+              <h3 id="catalogFormTitle">Pilih Buku</h3>
+
+              <div class="form-grid">
+                <div class="form-group full">
+                  <label for="book">Pilih Buku Untuk Di Publish</label>
+                  <select name="book" id="book">
+                    <!-- Diisi oleh JS -->
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="catTitle">Judul Buku</label>
+                  <input
+                    type="text"
+                    id="catTitle"
+                    placeholder="Judul buku"
+                    disabled
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="catAuthor">Nama Penulis</label>
+                  <input
+                    type="text"
+                    id="catAuthor"
+                    placeholder="Nama penulis"
+                    disabled
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="catPublisher">Penerbit</label>
+                  <input
+                    type="text"
+                    id="catPublisher"
+                    placeholder="Penerbit"
+                    value="OrangePress"
+                    disabled
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="catISBN">ISBN</label>
+                  <input
+                    type="text"
+                    id="catISBN"
+                    placeholder="978-xxx-xxxx-xx-x"
+                  />
+                </div>
+
+                <div class="form-group full">
+                  <label for="catDesc">Deskripsi / Sinopsis</label>
+                  <textarea
+                    id="catDesc"
+                    rows="4"
+                    placeholder="Ringkasan singkat isi buku"
+                    disabled
+                  ></textarea>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn" id="catalogSaveBtn">
+                  Upload Buku
+                </button>
+                <button type="button" class="btn-small" id="catalogResetBtn">
+                  Reset Form
+                </button>
+              </div>
+            </form>
+
+            <!-- TABEL KATALOG -->
+            <!-- <div class="catalog-table-wrap">
+              <div class="actions-bar">
+                <input
+                  type="text"
+                  id="searchCatalog"
+                  placeholder="Cari judul, penulis, ISBN..."
+                />
+              </div>
+
+              <div class="table-wrapper">
+                <table id="catalogTable">
+                  <thead>
+                    <tr>
+                      <th>Sampul</th>
+                      <th>Judul</th>
+                      <th>Penulis</th>
+                      <th>Penerbit</th>
+                      <th>Tahun</th>
+                      <th>ISBN</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div> -->
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./../../assets/js/admin/utils/navbar.js"></script>
+    <script src="/assets/js/admin/data/katalog.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>

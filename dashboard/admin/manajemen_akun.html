@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/assets/style/admin.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrap">
+      <div id="sidebar-container"></div>
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <h1 id="pageTitle">Dashboard Overview</h1>
+            <div class="lead">
+              Ringkasan cepat & kontrol semua aktivitas penerbitan.
+            </div>
+          </div>
+        </header>
+
+        <!-- ======================================== -->
+        <!-- PANEL: MANAJEMEN AKUN (PENULIS/ADMIN/REVIEWER) -->
+        <!-- ======================================== -->
+        <section id="authors" class="panel">
+          <!-- HEADER -->
+          <div class="panel-header">
+            <h2 class="panel-title">👥 Manajemen Akun</h2>
+            <p class="lead">
+              Kelola seluruh akun penulis, admin, dan reviewer.
+            </p>
+          </div>
+
+          <!-- SEARCH BAR -->
+          <div class="actions-bar">
+            <input
+              type="text"
+              id="searchAuthor"
+              placeholder="🔍 Cari nama, email, atau nomor telepon..."
+            />
+          </div>
+
+          <!-- CARD WRAPPER -->
+          <div class="manuscript-table-container">
+            <table id="authorsTable" class="authors-table">
+              <thead>
+                <tr>
+                  <th>Nama Lengkap</th>
+                  <th>Nomor Telepon</th>
+                  <th>Email</th>
+                  <th>Role / Jenis Akun</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- JS akan mengisi data -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <!-- =============================== -->
+        <!-- MODAL DETAIL PENULIS -->
+        <!-- =============================== -->
+        <div class="modal" id="authorDetailModal">
+          <div class="modal-content author-detail-box">
+            <!-- HEADER -->
+            <div class="detail-header">
+              <div class="detail-header-text">
+                <h3 id="authorDetailName" class="detail-title">
+                  Detail Penulis
+                </h3>
+                <p id="authorDetailSubtitle" class="detail-subtitle">
+                  Informasi lengkap akun penulis
+                </p>
+              </div>
+
+              <!-- CLOSE BUTTON -->
+              <button class="close-detail" id="closeAuthorDetailBtn">✕</button>
+            </div>
+
+            <!-- BODY (AUTO JS) -->
+            <div class="detail-body" id="authorDetailBody"></div>
+
+            <!-- FOOTER -->
+            <div class="detail-footer">
+              <button class="detail-close-footer" id="closeAuthorDetailBtn2">
+                Tutup
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="./../../assets/js/admin/utils/navbar.js"></script>
+    <script src="/assets/js/admin/data/manajemen_akun.js"></script>
+  </body>
+</html>

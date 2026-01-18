@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/assets/style/reviewer.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrap">
+      <div id="sidebar-container"></div>
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <h1 id="pageTitle">Dashboard Overview</h1>
+            <div class="lead">
+              Ringkasan cepat & kontrol semua aktivitas penerbitan.
+            </div>
+          </div>
+        </header>
+
+        <div class="main-content">
+          <!-- ============================= -->
+          <!-- PANEL: OVERVIEW / BERANDA    -->
+          <!-- ============================= -->
+          <section class="panel active-panel" id="inbox">
+            <div class="section-header">
+              <div>
+                <h2>Naskah Masuk</h2>
+                <p class="section-sub">
+                  Daftar naskah yang menunggu penilaian reviewer.
+                </p>
+              </div>
+              <div class="filters-bar">
+                <input
+                  type="text"
+                  id="searchInbox"
+                  placeholder="🔍 Cari judul atau penulis..."
+                />
+              </div>
+            </div>
+
+            <div id="naskahList" class="list"></div>
+          </section>
+        </div>
+        <!-- FOOTER: diseragamkan dengan halaman lain -->
+        <footer class="footer">© Orange Press 2025</footer>
+      </main>
+    </div>
+
+    <!-- MODAL DETAIL NASKAH -->
+    <div
+      id="detailModal"
+      class="modal"
+      style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 10000;
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      <div
+        class="modal-content"
+        style="
+          width: 500px;
+          max-width: 90%;
+          background: white;
+          padding: 1.5rem;
+          border-radius: 8px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        "
+      >
+        <h3 style="color: #ff6b00; margin-top: 0">Detail Naskah</h3>
+
+        <div id="detailContent">
+          <!-- Diisi oleh JS -->
+          <p class="muted">Memuat data...</p>
+        </div>
+
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+          "
+        >
+          <button
+            type="button"
+            id="closeDetailBtn"
+            class="btn-outline"
+            style="padding: 0.5rem 1rem; border-radius: 4px"
+          >
+            Tutup
+          </button>
+          <button
+            type="button"
+            id="startReviewBtn"
+            class="btn"
+            style="
+              padding: 0.5rem 1rem;
+              background: #ff6b00;
+              color: white;
+              border: none;
+              border-radius: 4px;
+            "
+          >
+            Mulai Review
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL FORM REVIEW -->
+
+    <div id="reviewModal" class="modal" style="display: none">
+      <div class="modal-box review-modal-box">
+        <h2>Form Review Naskah</h2>
+
+        <label for="status">Keputusan</label>
+        <select id="status" required>
+          <option value="">-- Pilih Keputusan --</option>
+          <option value="Approved">✔ Diterima</option>
+          <option value="Revission">🔄 Diterima dengan Revisi</option>
+          <option value="Rejected">❌ Ditolak</option>
+        </select>
+
+        <!-- Catatan hanya muncul jika "Perlu Revisi" dipilih -->
+        <div id="revisionNoteSection" style="display: none; margin-top: 1rem">
+          <label for="rvCatatan">Catatan untuk Penulis *</label>
+          <textarea
+            id="rvCatatan"
+            placeholder="Contoh: Perbaiki EYD, tambahkan referensi bab 2, dan rapikan layout."
+            rows="4"
+          ></textarea>
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn" type="button" id="submitReviewBtn">
+            Kirim Review
+          </button>
+          <button class="btn-secondary" type="button" id="closeReviewBtn">
+            Batal
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./../../assets/js/admin/utils/navbar.js"></script>
+    <script src="/assets/js/reviewer/naskah_masuk.js"></script>
+  </body>
+</html>

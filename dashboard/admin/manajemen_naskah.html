@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/assets/style/admin.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrap">
+      <div id="sidebar-container"></div>
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <h1 id="pageTitle">Dashboard Overview</h1>
+            <div class="lead">
+              Ringkasan cepat & kontrol semua aktivitas penerbitan.
+            </div>
+          </div>
+        </header>
+
+        <!-- PANEL: MANAJEMEN NASKAH (PREMIUM TABLE ORANGE PRESS) -->
+        <section class="panel" id="manuscripts">
+          <div class="panel-header">
+            <h2>Manajemen Naskah</h2>
+            <p class="lead">
+              Daftar naskah yang dikirim penulis. Klik detail untuk melihat
+              informasi lengkap.
+            </p>
+          </div>
+
+          <!-- SEARCH -->
+          <div class="actions-bar">
+            <input
+              type="text"
+              id="searchNaskah"
+              placeholder="🔍 Cari judul atau penulis..."
+            />
+          </div>
+
+          <!-- PREMIUM TABLE WRAPPER -->
+          <div class="manuscript-table-container">
+            <table id="manuscriptTable" class="manuscript-table">
+              <thead>
+                <tr>
+                  <th class="col-judul">Judul</th>
+                  <th class="col-penulis">Penulis</th>
+                  <th class="col-status">Status</th>
+                  <th class="col-aksi">Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- JS akan mengisi konten -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ========================= -->
+        <!-- MODAL DETAIL NASKAH PREMIUM -->
+        <!-- ========================= -->
+        <div class="modal" id="manuscriptDetailModal">
+          <div class="modal-content manuscript-detail-box">
+            <!-- HEADER MODAL -->
+            <div class="detail-header">
+              <div>
+                <!-- Judul naskah -->
+                <h3 id="detailJudul" class="detail-title">Detail Naskah</h3>
+
+                <!-- Subjudul: ditulis oleh ... (akan diisi JS) -->
+                <p id="detailSubJudul" class="detail-subtitle">
+                  Ditulis oleh -
+                </p>
+              </div>
+              <button class="close-detail" id="closeDetailBtn">✕</button>
+            </div>
+
+            <!-- BODY -->
+            <!-- Disesuaikan dengan FORM pada gambar 2 (urut & label),
+               namun tetap mempertahankan ID yang dipakai JS agar kompatibel. -->
+            <div id="detailBody" class="detail-body">
+              <!-- Formulir Naskah -->
+              <div class="md-section">
+                <h4 class="md-section-title">📝 Formulir Naskah</h4>
+
+                <div class="md-grid">
+                  <!-- Jenis Permohonan ISBN -->
+                  <div class="md-item">
+                    <div class="md-label">Jenis Permohonan ISBN</div>
+                    <div class="md-value" id="mdJenisIsbn">-</div>
+                  </div>
+
+                  <!-- Judul Buku -->
+                  <div class="md-item">
+                    <div class="md-label">Judul Buku</div>
+                    <div class="md-value" id="mdJudul">-</div>
+                  </div>
+
+                  <!-- Kepengarangan (semua kontributor) -->
+                  <div class="md-item md-full">
+                    <div class="md-label">Kepengarangan</div>
+                    <div class="md-value" id="mdKepengarangan">-</div>
+                  </div>
+
+                  <!-- Media Terbitan ISBN -->
+                  <div class="md-item">
+                    <div class="md-label">Media Terbitan ISBN</div>
+                    <div class="md-value" id="mdMediaTerbit">-</div>
+                  </div>
+
+                  <!-- Kelompok Pembaca -->
+                  <div class="md-item">
+                    <div class="md-label">Kelompok Pembaca</div>
+                    <div class="md-value" id="mdKelompokPembaca">-</div>
+                  </div>
+
+                  <!-- Jenis Pustaka -->
+                  <div class="md-item">
+                    <div class="md-label">Jenis Pustaka</div>
+                    <div class="md-value" id="mdJenisPustaka">-</div>
+                  </div>
+
+                  <!-- Kategori Jenis Pustaka -->
+                  <div class="md-item">
+                    <div class="md-label">Kategori Jenis Pustaka</div>
+                    <div class="md-value" id="mdKategoriPustaka">-</div>
+                  </div>
+
+                  <!-- KDT -->
+                  <div class="md-item">
+                    <div class="md-label">Apakah memerlukan KDT?</div>
+                    <div class="md-value" id="mdKdt">-</div>
+                  </div>
+
+                  <!-- Ilustrasi -->
+                  <div class="md-item">
+                    <div class="md-label">Apakah terdapat ilustrasi?</div>
+                    <div class="md-value" id="mdIlustrasi">-</div>
+                  </div>
+
+                  <!-- Jumlah Halaman -->
+                  <div class="md-item">
+                    <div class="md-label">Jumlah Halaman</div>
+                    <div class="md-value" id="mdJumlahHalaman">-</div>
+                  </div>
+
+                  <!-- Tinggi Buku -->
+                  <div class="md-item">
+                    <div class="md-label">Tinggi Buku (cm)</div>
+                    <div class="md-value" id="mdTinggiBuku">-</div>
+                  </div>
+
+                  <!-- Seri Buku -->
+                  <div class="md-item">
+                    <div class="md-label">Seri Buku</div>
+                    <div class="md-value" id="mdSeriBuku">-</div>
+                  </div>
+
+                  <!-- Sinopsis -->
+                  <div class="md-item md-full">
+                    <div class="md-label">Deskripsi/Abstrak/Sinopsis Buku</div>
+                    <div class="md-value" id="mdDeskripsi">-</div>
+                  </div>
+
+                  <!-- Status Proses -->
+                  <div class="md-item md-full">
+                    <div class="md-label">Status Proses</div>
+                    <div class="md-value" id="mdStatus">-</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- File & Lampiran -->
+              <div class="md-section">
+                <h4 class="md-section-title">📎 File & Lampiran</h4>
+
+                <div class="md-grid">
+                  <!-- Plagiarisme -->
+                  <div class="md-item md-full" id="plagiarismSection">
+                    <div class="md-label">Hasil Cek Plagiarisme (PDF)</div>
+                    <div class="md-value">
+                      <span id="mdTurnitinFile">-</span>
+                      <div class="md-actions">
+                        <button
+                          type="button"
+                          class="btn-small"
+                          id="btnDownloadTurnitin"
+                          disabled
+                        >
+                          Download
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Naskah/Dummy -->
+                  <div class="md-item md-full" id="manuscriptSection">
+                    <div class="md-label">Naskah / Dummy Buku</div>
+                    <div class="md-value">
+                      <span id="mdNaskahFile">-</span>
+                      <div class="md-actions">
+                        <button
+                          type="button"
+                          class="btn-small"
+                          id="btnDownloadNaskah"
+                          disabled
+                        >
+                          Download
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Attachment -->
+                  <div class="md-item md-full" id="attachmentSection">
+                    <div class="md-label">File Attachment</div>
+                    <div class="md-value">
+                      <ul class="md-file-list" id="mdAttachmentList"></ul>
+                    </div>
+                  </div>
+
+                  <!-- Cover Depan -->
+                  <div class="md-item md-full" id="coverFrontSection">
+                    <div class="md-label">Cover Buku Depan</div>
+                    <div class="md-value">
+                      <span id="mdCoverDepan">-</span>
+                      <div class="md-actions">
+                        <button
+                          type="button"
+                          class="btn-small"
+                          id="btnDownloadCoverDepan"
+                          disabled
+                        >
+                          Download
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Cover Belakang -->
+                  <div class="md-item md-full" id="coverBackSection">
+                    <div class="md-label">Cover Buku Belakang</div>
+                    <div class="md-value">
+                      <span id="mdCoverBelakang">-</span>
+                      <div class="md-actions">
+                        <button
+                          type="button"
+                          class="btn-small"
+                          id="btnDownloadCoverBelakang"
+                          disabled
+                        >
+                          Download
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- FOOTER -->
+            <div class="detail-footer">
+              <button class="detail-close-footer" id="closeDetailBtn2">
+                Tutup
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="./../../assets/js/admin/utils/navbar.js"></script>
+    <script src="/assets/js/admin/data/naskah.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>
