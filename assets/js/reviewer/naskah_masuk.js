@@ -18,17 +18,19 @@ let currentManuscriptId = null;
 // === FETCH & RENDER ===
 async function loadManuscripts() {
   try {
-    const res = await fetch("https://orange-press-be.vercel.app/api/reviewer/manuscripts", {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    const res = await fetch(
+      "https://orange-press-be.vercel.app/api/reviewer/manuscripts",
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      },
+    );
     if (!res.ok) throw new Error("Gagal memuat naskah");
     manuscripts = await res.json();
     renderInbox();
   } catch (err) {
     console.error(err);
-    document.getElementById(
-      "naskahList"
-    ).innerHTML = `<p class="section-sub" style="color:red;">Gagal memuat daftar naskah.</p>`;
+    document.getElementById("naskahList").innerHTML =
+      `<p class="section-sub" style="color:red;">Gagal memuat daftar naskah.</p>`;
   }
 }
 
@@ -58,8 +60,8 @@ function renderInbox() {
       (m) =>
         m.title.toLowerCase().includes(keyword) ||
         m.contributors?.some(
-          (c) => c.role === "Penulis" && c.name.toLowerCase().includes(keyword)
-        )
+          (c) => c.role === "Penulis" && c.name.toLowerCase().includes(keyword),
+        ),
     );
   }
 
@@ -84,15 +86,15 @@ function renderInbox() {
         <div class="item-card ${isReviewed ? "item-disabled" : ""}">
           <div class="item-main">
             <div class="item-title">${m.title} ${
-            isReviewed
-              ? '<span style="font-size:10px; color:green;">(Selesai Diriview)</span>'
-              : ""
-          }</div>
+              isReviewed
+                ? '<span style="font-size:10px; color:green;">(Selesai Diriview)</span>'
+                : ""
+            }</div>
             <div class="item-meta">
               Penulis: ${author} • Bidang: ${field}<br>
               Masuk: ${formatDateLabel(m.createdAt)} • <strong>Status: ${
-            m.status
-          }</strong>
+                m.status
+              }</strong>
             </div>
           </div>
           <div class="item-actions">
@@ -148,7 +150,7 @@ async function loadManuscriptDetail(id) {
       `https://orange-press-be.vercel.app/api/reviewer/manuscripts/${id}`,
       {
         headers: { Authorization: `Bearer ${token}` },
-      }
+      },
     );
     const data = await res.json();
 
@@ -182,14 +184,14 @@ function openReviewModal() {
   document.getElementById("reviewModal").style.display = "flex";
   document.getElementById("status").value = "";
   document.getElementById("rvCatatan").value = "";
+
+  // Reset input file
+  const fileInput = document.getElementById("fileReview");
+  if (fileInput) fileInput.value = "";
+
   document.getElementById("revisionNoteSection").style.display = "none";
   document.getElementById("submitReviewBtn").disabled = false;
   document.getElementById("submitReviewBtn").textContent = "Kirim Review";
-
-  // Toggle catatan berdasarkan pilihan
-  document
-    .getElementById("status")
-    .addEventListener("change", toggleRevisionNote, { once: false });
 }
 
 function toggleRevisionNote() {
@@ -204,11 +206,14 @@ document
 
 async function submitReview() {
   const status = document.getElementById("status").value;
+  const fileInput = document.getElementById("fileReview");
+  const noteInput = document.getElementById("rvCatatan");
+
   if (!status) return alert("Pilih keputusan terlebih dahulu.");
 
+  // Validasi khusus untuk status revisi
   if (status === "Revission") {
-    const note = document.getElementById("rvCatatan").value.trim();
-    if (!note) return alert("Catatan revisi wajib diisi.");
+    if (!noteInput.value.trim()) return alert("Catatan revisi wajib diisi.");
   }
 
   try {
@@ -216,9 +221,9 @@ async function submitReview() {
     btn.disabled = true;
     btn.textContent = "Mengirim...";
 
-    let url,
-      method = "POST",
-      body = null;
+    // Gunakan FormData agar bisa mengirim file
+    const formData = new FormData();
+    let url = "";
 
     if (status === "Approved") {
       url = `https://orange-press-be.vercel.app/api/reviewer/manuscripts/${currentManuscriptId}/approve`;
@@ -226,19 +231,32 @@ async function submitReview() {
       url = `https://orange-press-be.vercel.app/api/reviewer/manuscripts/${currentManuscriptId}/reject`;
     } else if (status === "Revission") {
       url = `https://orange-press-be.vercel.app/api/reviewer/manuscripts/${currentManuscriptId}/revision`;
-      body = JSON.stringify({
-        revisionNote: document.getElementById("rvCatatan").value.trim(),
-      });
+
+      // Masukkan catatan ke formData
+      formData.append("revisionNote", noteInput.value.trim());
+
+      // Masukkan file ke formData (jika ada)
+      if (fileInput.files.length > 0) {
+        formData.append("file", fileInput.files[0]);
+      }
     }
 
-    const res = await fetch(url, {
-      method,
+    // Konfigurasi fetch
+    const fetchOptions = {
+      method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
+        // JANGAN set 'Content-Type' secara manual saat menggunakan FormData
       },
-      body,
-    });
+    };
+
+    // Jika status adalah revisi, tambahkan body berupa formData
+    if (status === "Revission") {
+
+      fetchOptions.body = formData;
+    }
+
+    const res = await fetch(url, fetchOptions);
 
     if (res.ok) {
       alert("Review berhasil dikirim!");
@@ -252,8 +270,9 @@ async function submitReview() {
     console.error(err);
     alert("Terjadi kesalahan saat mengirim review.");
   } finally {
-    document.getElementById("submitReviewBtn").disabled = false;
-    document.getElementById("submitReviewBtn").textContent = "Kirim Review";
+    const btn = document.getElementById("submitReviewBtn");
+    btn.disabled = false;
+    btn.textContent = "Kirim Review";
   }
 }
 

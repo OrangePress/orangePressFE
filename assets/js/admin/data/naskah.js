@@ -63,13 +63,14 @@ async function loadManuscriptDetail(id) {
         .map((contrib) => `${contrib.role}: ${contrib.name}`)
         .join("; ");
       document.getElementById("mdKepengarangan").textContent = kepengarangan;
+      document.getElementById("detailSubJudul").textContent = kepengarangan;
     } else {
+      document.getElementById("detailSubJudul").textContent = "-";
       document.getElementById("mdKepengarangan").textContent = "-";
     }
 
-    // ... (isi semua field lain seperti di jawaban sebelumnya)
-
     // Contoh lanjutan:
+    document.getElementById("mdJudul").textContent = data.title || "-";
     document.getElementById("mdJenisIsbn").textContent = data.isbnType || "-";
     document.getElementById("mdMediaTerbit").textContent = data.isbnType || "-";
     document.getElementById("mdKelompokPembaca").textContent =
@@ -80,7 +81,7 @@ async function loadManuscriptDetail(id) {
       data.categoryType || "-";
     document.getElementById("mdKdt").textContent = data.needKdt
       ? "Ya"
-      : "Tidak";
+      : "Tida k";
     document.getElementById("mdIlustrasi").textContent = data.hasIllustration
       ? "Ya"
       : "Tidak";
